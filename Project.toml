@@ -1,0 +1,7 @@
+authors = ["WooKyoung Noh <wookay.noh@gmail.com>"]
+name = "TestJulia07"
+uuid = "bed7620c-74a6-11e8-2e51-c9a826a170cb"
+version = "0.1.0"
+
+[deps]
+DataLogger = "f60b7598-7494-11e8-3704-db4df1869bdc"
