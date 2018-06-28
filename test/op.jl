@@ -7,3 +7,9 @@ end
 
 @test ==(+-+, -)
 @test ==(+-+-+, +)
+
+@test (π < π) == false
+
+@test √4π == 2pi
+@test 1e-3 == 0.001
+@test √4π ≈ 2pi atol=1e-3
