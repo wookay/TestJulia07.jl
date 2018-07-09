@@ -48,6 +48,7 @@ eval(quote
 
     function Broadcast.broadcasted(::typeof(+), ::G{T,N}, ::Int) where {T,N}
         @info :broadcasted
+        :nothing
     end
 
     @info :g5 $g2 .+ 1
@@ -114,5 +115,5 @@ Main style.jl#28  getindex
 Main style.jl#28  getindex
 Main style.jl#47  g3    Float32[5.0, 6.0] .+ 1 = Float32[6.0, 7.0]
 Main style.jl#50  broadcasted
-Main style.jl#53  g5    Float32[5.0, 6.0] .+ 1 = nothing
+Main style.jl#54  g5    Float32[5.0, 6.0] .+ 1 = nothing
 """
