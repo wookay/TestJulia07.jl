@@ -1,4 +1,5 @@
-#=
+module test_observables
+
 using Observables
 using Test
 
@@ -18,4 +19,5 @@ off(r, f)
 r[] = 3
 @test history == [(on, r, 2)]
 @test r.listeners == []
-=#
+
+end # module test_observables
