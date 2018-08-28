@@ -90,13 +90,6 @@ Main style.jl#28  getindex
 Main style.jl#28  getindex
 Main style.jl#28  getindex
 Main style.jl#28  getindex
-Main style.jl#17  size
-Main style.jl#17  size
-Main style.jl#17  size
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#28  getindex
 Main style.jl#12  BroadcastStyle
 Main style.jl#17  size
 Main style.jl#22  similar    (T, N, ElType) = (Float32, 1, Float32)
@@ -114,6 +107,13 @@ Main style.jl#28  getindex
 Main style.jl#28  getindex
 Main style.jl#28  getindex
 Main style.jl#47  g3    Float32[5.0, 6.0] .+ 1 = Float32[6.0, 7.0]
+Main style.jl#17  size
+Main style.jl#17  size
+Main style.jl#17  size
+Main style.jl#28  getindex
+Main style.jl#28  getindex
+Main style.jl#28  getindex
+Main style.jl#28  getindex
 Main style.jl#50  broadcasted
 Main style.jl#54  g5    Float32[5.0, 6.0] .+ 1 = nothing
 """
