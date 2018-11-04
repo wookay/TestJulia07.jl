@@ -9,3 +9,5 @@ end
 
 f()
 @test n == 3
+
+@test Main.n == 3
