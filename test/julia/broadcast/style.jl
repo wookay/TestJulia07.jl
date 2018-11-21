@@ -1,3 +1,5 @@
+module test_julia_broadcast_style
+
 struct G{T,N} <: AbstractArray{T, N}
     data::Array{T,N}
     sr::String
@@ -59,61 +61,63 @@ end
 
 using Test
 @test output == """
-Main style.jl#12  BroadcastStyle
-Main style.jl#17  size
-Main style.jl#22  similar    (T, N, ElType) = (Int64, 1, Float32)
-Main style.jl#17  size
-Main style.jl#17  size
-Main style.jl#28  getindex
-Main style.jl#33  setindex
-Main style.jl#28  getindex
-Main style.jl#33  setindex
-Main style.jl#43  g2    g2 isa G{Float32, 1} = true
-Main style.jl#17  size
-Main style.jl#17  size
-Main style.jl#17  size
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#17  size
-Main style.jl#17  size
-Main style.jl#17  size
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#17  size
-Main style.jl#17  size
-Main style.jl#17  size
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#12  BroadcastStyle
-Main style.jl#17  size
-Main style.jl#22  similar    (T, N, ElType) = (Float32, 1, Float32)
-Main style.jl#17  size
-Main style.jl#17  size
-Main style.jl#28  getindex
-Main style.jl#33  setindex
-Main style.jl#28  getindex
-Main style.jl#33  setindex
-Main style.jl#17  size
-Main style.jl#17  size
-Main style.jl#17  size
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#47  g3    Float32[5.0, 6.0] .+ 1 = Float32[6.0, 7.0]
-Main style.jl#17  size
-Main style.jl#17  size
-Main style.jl#17  size
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#28  getindex
-Main style.jl#50  broadcasted
-Main style.jl#54  g5    Float32[5.0, 6.0] .+ 1 = nothing
+Main.test_julia_broadcast_style style.jl#14  BroadcastStyle
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#24  similar    (T, N, ElType) = (Int64, 1, Float32)
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#35  setindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#35  setindex
+Main.test_julia_broadcast_style style.jl#45  g2    g2 isa G{Float32, 1} = true
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#14  BroadcastStyle
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#24  similar    (T, N, ElType) = (Float32, 1, Float32)
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#35  setindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#35  setindex
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#19  size
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#30  getindex
+Main.test_julia_broadcast_style style.jl#49  g3    Float32[5.0, 6.0] .+ 1 = Float32[6.0, 7.0]
+Main.test_julia_broadcast_style style.jl#52  broadcasted
+Main.test_julia_broadcast_style style.jl#56  g5    Float32[5.0, 6.0] .+ 1 = nothing
 """
+
+end # module test_julia_broadcast_style
