@@ -21,6 +21,7 @@ A = [  4  12 -16;
                               12  37   0;
                              -16 -43  98]
 @test issymmetric(A)
+@test A' == adjoint(A) == transpose(A) == A
 
 C = cholesky(A)
 @test C.L * C.U == A
@@ -54,6 +55,7 @@ A = [  4  12 -16;
       12  37 -43;
      -16 -43  98]
 @test Diagonal(A) ==
+      Diagonal(diag(A)) ==
       diagm(0=>diag(A)) ==
                            [  4   0   0;
                               0  37   0;
