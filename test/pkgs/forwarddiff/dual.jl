@@ -15,7 +15,4 @@ f(x) = 2x
 y = G(f, -2pi:2pi)
 @test y[1] isa Vector{ForwardDiff.Dual{ForwardDiff.Tag{typeof(f),Float64},Float64,7}}
 
-# Partials
-# Dual
-
 end # module test_pkgs_forwarddiff_dual

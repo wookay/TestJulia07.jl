@@ -1,5 +1,8 @@
 using Test
 
+# JL_SKIP=0 julia runtests.jl
+skipped_tests = Dict(:list => [], :pass => !haskey(ENV, "JL_SKIP"))
+
 all_tests = []
 for (root, dirs, files) in walkdir(".")
     for filename in files
@@ -17,3 +20,5 @@ for (idx, filepath) in enumerate(all_tests)
         include(filepath)
     end
 end
+
+!isempty(skipped_tests[:list]) && printstyled(string("skipped tests: ", join(skipped_tests[:list], ", "), "\n"), color=:yellow)
