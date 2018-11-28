@@ -37,4 +37,8 @@ end
 @test T([1, 2, 3]) isa T{Int,Vector{Int}}
 @test T(['a']) isa T{Char,Vector{Char}}
 
+(a, rest) = Iterators.peel("abc")
+@test a == 'a'
+@test collect(rest) == ['b', 'c']
+
 end # module test_iterators
