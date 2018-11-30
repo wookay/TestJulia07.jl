@@ -1,5 +1,6 @@
 module TestJulia07
 
+# julia --color=yes -e 'using TestJulia07; TestJulia07.pull(split("Metalhead Flux"))'
 function pull(pkgs::Vector)
     for pkg in pkgs
         printstyled(pkg, ' ', color=:yellow)
