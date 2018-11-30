@@ -13,6 +13,6 @@ d = Normal(0, 1)
 
 @test 0 == quantile(d, 0.5)
 medianinterval(d, p = 0.95) = (quantile(d, 1-(1+p)/2), quantile(d, (1+p)/2))
-@test medianinterval(d) == (-1.9599639845400576, 1.9599639845400576)
+@test (all∘identity)(isapprox.(medianinterval(d), (-1.9599639845400576, 1.9599639845400576)))
 
 end # module test_pkgs_distributions_normal
