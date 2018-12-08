@@ -1,28 +1,40 @@
-## Documentation: http://docs.travis-ci.com/user/languages/julia/
+# Documentation: http://docs.travis-ci.com/user/languages/julia/
+notifications:
+  email: false
+
 language: julia
-os:
-  - linux
-  - osx
+
 julia:
   - 1.0
   - nightly
+
+matrix:
+  exclude:
+    - os: osx
+      julia: nightly
+
+    - os: windows
+      julia: nightly
+      language: julia
+
+  include:
+    - os: osx
+
+    - os: windows
+      language: sh
+      before_install:
+        - choco install julia
+      script:
+        - julia --color=yes -e 'using InteractiveUtils; versioninfo(verbose=true)'
+        - julia --color=yes --project=. -e 'using Pkg; Pkg.test()'
+
 addons:
   apt:
     packages:
       - python-numpy
       - python3-numpy
-notifications:
-  email: false
-git:
-  depth: 99999999
 
 before_script:
   - julia -e 'using Pkg; pkg"add https://github.com/wookay/DataLogger.jl.git https://github.com/wookay/Jive.jl.git"'
   - julia -e 'using Pkg; pkg"dev Flux"' # Flux master
   - julia -e 'using Pkg; pkg"precompile"'
-
-after_success:
-  # push coverage results to Coveralls
-  - julia -e 'cd(Pkg.dir("TestJulia07")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
-  # push coverage results to Codecov
-  - julia -e 'cd(Pkg.dir("TestJulia07")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
