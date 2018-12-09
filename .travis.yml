@@ -27,6 +27,10 @@ matrix:
       script:
         - julia --color=yes -e 'using InteractiveUtils; versioninfo(verbose=true)'
         - julia --color=yes --project=. -e 'using Pkg; Pkg.test()'
+      before_script:
+        - julia -e 'using Pkg; pkg"add https://github.com/wookay/DataLogger.jl.git https://github.com/wookay/Jive.jl.git"'
+        - julia -e 'using Pkg; pkg"dev Flux"' # Flux master
+        - julia -e 'using Pkg; pkg"precompile"'
 
 addons:
   apt:
