@@ -8,6 +8,7 @@ nodes = child_nodes(xroot)
 top = collect(nodes)[2]
 
 key = nothing
+reorder = Dict()
 for keydictnode in child_nodes(top)
     if name(keydictnode) == "key"
         global key
@@ -26,9 +27,14 @@ for keydictnode in child_nodes(top)
             end
         end
         if startswith(key, "Ansi")
-            n = split(key, ' ')[2]
+            n = parse(Int, split(key, ' ')[2])
             color = hex(BGR(colors[2:end]...))
-            println("color", n, " = #", color)
+            reorder[n] = color
         end
     end
+end
+
+for n in sort(collect(keys(reorder)))
+     color = reorder[n]
+     println(".color", rpad(n, 2), " {fill: #", color, ";}")
 end
