@@ -1,3 +1,5 @@
+module test_julia_expr
+
 using Test
 
 name = :GTypePlugin
@@ -32,3 +34,14 @@ x = 1
 @zerox
 #@info :escx x
 @test x == 0
+
+end # module test_julia_expr
+
+
+module test_julia_expr_gensym
+
+using Test
+
+@test gensym() != gensym()
+
+end # module test_julia_expr_gensym
