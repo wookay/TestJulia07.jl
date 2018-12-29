@@ -30,6 +30,7 @@ DualNumbers = "fa6b7ba4-c1ee-5f82-b5fc-ecf0adba8f74"
 Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 CSTParser = "00ebfdb7-1f24-5e51-bd34-a7502290713f"
 JuliaDB = "a93385a2-3734-596a-9a66-3cfbb77141e6"
+IntervalArithmetic = "d1acc4aa-44c8-5952-acd4-ba5d80a2a253"
 
 [targets]
-test = ["Test", "Printf", "InteractiveUtils", "LinearAlgebra", "Statistics", "Jive", "DataLogger", "Cassette", "DataStructures", "DiffResults", "DiffRules", "Distributions", "FileIO", "Flux", "ForwardDiff", "Lazy", "Metalhead", "MusicManipulations", "Observables", "PyCall", "ReverseDiff", "WAV", "DualNumbers", "Unitful", "CSTParser", "JuliaDB"]
+test = ["Test", "Printf", "InteractiveUtils", "LinearAlgebra", "Statistics", "Jive", "DataLogger", "Cassette", "DataStructures", "DiffResults", "DiffRules", "Distributions", "FileIO", "Flux", "ForwardDiff", "Lazy", "Metalhead", "MusicManipulations", "Observables", "PyCall", "ReverseDiff", "WAV", "DualNumbers", "Unitful", "CSTParser", "JuliaDB", "IntervalArithmetic"]
