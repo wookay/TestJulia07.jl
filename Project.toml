@@ -31,6 +31,10 @@ Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 CSTParser = "00ebfdb7-1f24-5e51-bd34-a7502290713f"
 JuliaDB = "a93385a2-3734-596a-9a66-3cfbb77141e6"
 IntervalArithmetic = "d1acc4aa-44c8-5952-acd4-ba5d80a2a253"
+URIParser = "30578b45-9adc-5946-b283-645ec420af67"
+JSON2 = "2535ab7d-5cd8-5a07-80ac-9b1792aadce3"
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+BSON = "fbb218c0-5317-5bc6-957e-2ee96dd4b1f0"
 
 [targets]
-test = ["Test", "Printf", "InteractiveUtils", "LinearAlgebra", "Statistics", "Jive", "DataLogger", "Cassette", "DataStructures", "DiffResults", "DiffRules", "Distributions", "FileIO", "Flux", "ForwardDiff", "Lazy", "Metalhead", "MusicManipulations", "Observables", "PyCall", "ReverseDiff", "WAV", "DualNumbers", "Unitful", "CSTParser", "JuliaDB", "IntervalArithmetic"]
+test = ["Test", "Printf", "InteractiveUtils", "LinearAlgebra", "Statistics", "Jive", "DataLogger", "Cassette", "DataStructures", "DiffResults", "DiffRules", "Distributions", "FileIO", "Flux", "ForwardDiff", "Lazy", "Metalhead", "MusicManipulations", "Observables", "PyCall", "ReverseDiff", "WAV", "DualNumbers", "Unitful", "CSTParser", "JuliaDB", "IntervalArithmetic", "URIParser", "JSON2", "BenchmarkTools", "BSON"]
