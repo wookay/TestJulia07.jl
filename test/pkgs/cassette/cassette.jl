@@ -16,9 +16,20 @@ function Cassette.prehook(ctx::InferCtx, f, args...)
     end
 end
 
+function Cassette.posthook(ctx::InferCtx, f, args...)
+    if f in (relu, relulayer)
+        push!(ctx.metadata, (:posthook, f, args))
+    end
+end
+
 ctx = InferCtx(metadata=Any[])
 overdub(ctx, relulayer, 1, 2, 3)
 
-@test ctx.metadata == [(:prehook, relu, (5,))]
+@test ctx.metadata == [
+    (:posthook, relu, (convert, typeof(relu), relu)),
+    (:posthook, relu, (getproperty, Broadcast.Broadcasted(relu, (Broadcast.Broadcasted(+, (2, 3)),)), :f)),
+    (:prehook, relu, (5,)),
+    (:posthook, relu, (5, 5))
+]
 
 end # module test_pkgs_cassette
