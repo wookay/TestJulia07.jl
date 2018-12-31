@@ -31,6 +31,6 @@ at3 = ctx.metadata[3]
 
 @test at2.hook == :post
 @test at3.hook == :pre
-@test at2.copy == at3.copy
+@test filter(!isnan, at2.copy) == filter(!isnan, at3.copy)
 
 end # module test_pkgs_flux_cassette
