@@ -13,4 +13,6 @@ using Test
 TV, NV = TypeVar(:T), TypeVar(:N)
 @test string(Array{TV,NV}) == "Array{T,N}"
 
+@test (T where T) === Any
+
 end # module test_julia_types
