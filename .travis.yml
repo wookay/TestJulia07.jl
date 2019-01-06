@@ -36,6 +36,7 @@ addons:
 
 before_script:
   - julia --color=yes -e 'using Pkg; pkg"add https://github.com/wookay/DataLogger.jl.git"'
+  - julia --color=yes -e 'using Pkg; pkg"add https://github.com/dillondaudert/UMAP.jl.git"'
   - julia --color=yes -e 'using Pkg; pkg"dev Flux"'
   - julia --color=yes -e 'using Pkg; pkg"precompile"'
   - JULIA_DEBUG="all" julia --color=yes -e '@debug 1+2+3'

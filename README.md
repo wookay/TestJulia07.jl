@@ -11,7 +11,6 @@
 `julia>` type `]` key
 
 ```julia
-(v1.0) pkg> add https://github.com/wookay/Jive.jl.git
 (v1.0) pkg> add https://github.com/wookay/DataLogger.jl.git
 (v1.0) pkg> add https://github.com/wookay/TestJulia07.jl.git
 (v1.0) pkg> precompile
