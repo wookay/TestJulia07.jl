@@ -1,3 +1,5 @@
+module test_julia_wasm
+
 using Test
 
 s = """
@@ -53,3 +55,15 @@ function wasm_bytes(s)
 end
 
 @test wasm_bytes(s)[1:4] == UInt8[0x00, 0x61, 0x73, 0x6d]
+
+end # module test_julia_wasm
+
+
+using Jive
+@If VERSION >= v"1.2-DEV" module test_julia_wasm_isjsvm
+
+using Test
+
+@test !Sys.isjsvm()
+
+end # @If VERSION >= v"1.2-DEV" module test_julia_wasm_isjsvm

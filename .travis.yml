@@ -25,8 +25,6 @@ matrix:
       before_install:
         - choco install julia
         - julia --color=yes -e 'using InteractiveUtils; versioninfo(verbose=true)'
-      script:
-        - julia --color=yes -e 'using Pkg; pkg"dev ."; pkg"test TestJulia07"'
 
 addons:
   apt:
@@ -41,3 +39,7 @@ before_script:
   - julia --color=yes -e 'using Pkg; pkg"precompile"'
   - JULIA_DEBUG="all" julia --color=yes -e '@debug 1+2+3'
   -                   julia --color=yes -e '@debug 5+6+7'
+
+script:
+  - if [[ "$TRAVIS_OS_NAME" != windows ]] ; then julia --color=yes -p 2 -e 'using Pkg; Pkg.test(coverage=true)' ; fi
+  - if [[ "$TRAVIS_OS_NAME" == windows ]] ; then julia --color=yes -p 2 -e 'using Pkg; pkg"dev ."; pkg"test TestJulia07"' ; fi
