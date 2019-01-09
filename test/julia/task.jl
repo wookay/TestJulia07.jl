@@ -1,3 +1,5 @@
+module test_julia_task
+
 using Test
 
 t = @async begin
@@ -12,3 +14,5 @@ end
 
 t = @async "world"
 @test fetch(t) == "world"
+
+end # module test_julia_task

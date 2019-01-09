@@ -33,10 +33,10 @@ ReverseDiff = "37e2e3b7-166d-5795-8a7a-e32c996b4267"
 SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+UMAP = "bfa8c4a0-b777-11e8-1650-5d8029af211b"
 URIParser = "30578b45-9adc-5946-b283-645ec420af67"
 Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 WAV = "8149f6b0-98f6-5db9-b78f-408fbbb8ef88"
-UMAP = "bfa8c4a0-b777-11e8-1650-5d8029af211b"
 
 [targets]
 test = ["Test", "Printf", "InteractiveUtils", "LinearAlgebra", "Statistics", "Jive", "DataLogger", "Cassette", "DataStructures", "DiffResults", "DiffRules", "Distributions", "FileIO", "Flux", "ForwardDiff", "Lazy", "Metalhead", "MusicManipulations", "Observables", "PyCall", "ReverseDiff", "WAV", "DualNumbers", "Unitful", "CSTParser", "JuliaDB", "IntervalArithmetic", "URIParser", "JSON2", "BenchmarkTools", "BSON", "SparseArrays", "UMAP"]

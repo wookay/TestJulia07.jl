@@ -1,4 +1,4 @@
-module test_iterators
+module test_julia_iterators
 
 using Test
 
@@ -41,4 +41,4 @@ end
 @test a == 'a'
 @test collect(rest) == ['b', 'c']
 
-end # module test_iterators
+end # module test_julia_iterators

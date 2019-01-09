@@ -11,4 +11,4 @@ using Test
 @test 1 == sizeof("a")
 @test 3 == sizeof("헐")
 
-end
+end # module test_reflection

@@ -1,3 +1,5 @@
+module test_julia_cfunction
+
 using Test
 
 f() = 2
@@ -17,3 +19,5 @@ cb_info = C_NULL
 ccall(h, Cvoid, (Cdouble, Ptr{Cuchar}, Ptr{Cvoid}), Cdouble(1), msg, cb_info)
 
 @test record == [(1.0, msg, cb_info)]
+
+end # module test_julia_cfunction

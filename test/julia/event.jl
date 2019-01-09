@@ -1,3 +1,5 @@
+module test_julia_event
+
 using Test
 
 tc = Ref(0)
@@ -9,3 +11,5 @@ t = Timer(0; interval=1) do t
 end
 @test tc[] == 0
 @test isopen(t)
+
+end # module test_julia_event

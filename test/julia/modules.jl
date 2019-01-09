@@ -1,4 +1,4 @@
-module test_modules1
+module test_julia_modules1
 
 using Test
 
@@ -7,8 +7,8 @@ export c, d
 end
 
 @test [:B, :c, :d] == names(B)
-@test test_modules1 === parentmodule(B)
-@test (:Main, :test_modules1, :B) == fullname(B)
+@test test_julia_modules1 === parentmodule(B)
+@test (:Main, :test_julia_modules1, :B) == fullname(B)
 @test :B == nameof(B)
 @test Base.isexported(B, :c)
 
@@ -19,32 +19,32 @@ end
 
 @test length(Base.loaded_modules) >= 33
 
-end # module test_modules1
+end # module test_julia_modules1
 
 
-module test_modules2
+module test_julia_modules2
 
 using Test
 
 module A
 f(a::T) where T<:AbstractArray = 2
-end # test_modules2.A
+end # test_julia_modules2.A
 
 module B
 struct MyArray <: AbstractArray{Int,1}
 end
 Base.size(::MyArray) = 0
-end # test_modules2.B
+end # test_julia_modules2.B
 
 using .A: f
 using .B: MyArray
 
 @test f(MyArray()) == 2
 
-end # module test_modules2
+end # module test_julia_modules2
 
 
-module test_modules3
+module test_julia_modules3
 
 global a = 2
 
@@ -58,14 +58,14 @@ using Test
 using .A
 @test a == 2
 
-end # module test_modules3
+end # module test_julia_modules3
 
 
-module test_modules4
+module test_julia_modules4
 
 using Test
 m = Base.require(Base.PkgId(
                      Base.UUID((0x37e2e46d_f89d_539d,0xb4ee_838fcccc9c8e)), "LinearAlgebra"))
 @test m isa Module
 
-end # module test_modules4
+end # module test_julia_modules4

@@ -1,3 +1,5 @@
+module test_julia_namedtuples
+
 using Test
 
 @test (a=1, b=2) == (a=1, :b=>2)
@@ -7,3 +9,5 @@ using Test
 d = Dict(:a=>1, :b=>2)
 @test (; d...) == (a=1, b=2)
 @test d == Dict(pairs((a=1, b=2)))
+
+end # module test_julia_namedtuples

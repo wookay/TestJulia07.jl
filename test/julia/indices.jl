@@ -1,3 +1,5 @@
+module test_julia_indices
+
 using Test
 
 T = NTuple{N,UnitRange{Int}} where N
@@ -6,3 +8,5 @@ T = NTuple{N,UnitRange{Int}} where N
 
 @test LinearIndices{1,Tuple{UnitRange{Int}}}((1:2,)) == LinearIndices((1:2,))
 @test LinearIndices{2,Tuple{UnitRange{Int},UnitRange{Int}}}((1:2, 3:4)) == LinearIndices((1:2, 3:4))
+
+end # module test_julia_indices
