@@ -8,4 +8,11 @@ f() = rand() > .5 ? 0 : 0.
 @test_throws ErrorException @inferred(f())
 @test_skip 1 == 2+3
 
+@testset "one" begin
+    @test true
+    @testset "two" begin
+        @test true
+    end
+end
+
 end # module test_stdlib_test

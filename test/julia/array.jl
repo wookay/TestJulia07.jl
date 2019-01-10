@@ -28,7 +28,9 @@ using Jive
 
 using Test
 
-A = [1 2; 3 4; 5 6]
+A = [1 2;
+     3 4;
+     5 6]
 @test collect(eachrow(A)) == [[1, 2], [3, 4], [5, 6]]
 @test collect(eachcol(A)) == [[1, 3, 5], [2, 4, 6]]
 
