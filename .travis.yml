@@ -33,6 +33,7 @@ addons:
       - python3-numpy
 
 before_script:
+  - julia --color=yes -e 'using Pkg; pkg"dev Jive"'
   - julia --color=yes -e 'using Pkg; pkg"add https://github.com/wookay/DataLogger.jl.git"'
   - julia --color=yes -e 'using Pkg; pkg"add https://github.com/dillondaudert/UMAP.jl.git"'
   - julia --color=yes -e 'using Pkg; pkg"dev Flux"'
