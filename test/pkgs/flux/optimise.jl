@@ -1,3 +1,5 @@
+#using Jive
+#@useinside module test_pkgs_flux_optimise
 module test_pkgs_flux_optimise
 
 using Test
@@ -20,22 +22,24 @@ w′ = param([
 
 loss(x) = Flux.mse(w*x, w′*x)
 
-opt = ADAGrad() # η = 0.1
+for opt in (ADAGrad(), Descent(), ADAM())
+    # ADAGrad(η = 0.1)
+    # Descent(η = 0.1)
+    # ADAM(η = 0.001, β = (0.9, 0.999))
+    # @info opt.eta # η
 
+    l = loss(rand(3, 3))
+    Flux.back!(l)
+    @test !iszero(w′.grad)
+    delta = Optimise.update!(opt, w′.data, w′.grad)
+    w′.data .-= delta
 
-l = loss(rand(3, 3))
-Flux.back!(l)
-@test !iszero(w′.grad)
-delta = Optimise.update!(opt, w′.data, w′.grad)
-w′.data .-= delta
+    l = loss(rand(3, 3))
+    Flux.back!(l)
+    delta = Optimise.update!(opt, w′.data, w′.grad)
+    w′.data .-= delta
 
-
-l = loss(rand(3, 3))
-Flux.back!(l)
-delta = Optimise.update!(opt, w′.data, w′.grad)
-w′.data .-= delta
-
-
-@test Tracker.TrackedReal(0.8000038000134445) > Flux.mse(w, w′)
+    @test Tracker.TrackedReal(0.8000038000134445) > Flux.mse(w, w′)
+end
 
 end # module test_pkgs_flux_optimise
