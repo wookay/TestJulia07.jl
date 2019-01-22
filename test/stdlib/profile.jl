@@ -1,7 +1,7 @@
 module test_stdlib_profile
 
 using Profile
-using Bukdu2
+using Bukdu
 # using StatProfilerHTML
 
 @profile get("/") do conn::Conn
