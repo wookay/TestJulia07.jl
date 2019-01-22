@@ -1,6 +1,6 @@
-#using Jive
-#@useinside module test_pkgs_flux_optimise
-module test_pkgs_flux_optimise
+using Jive
+@useinside module test_pkgs_flux_optimise
+#module test_pkgs_flux_optimise
 
 using Test
 using Flux
@@ -17,7 +17,7 @@ w′ = param([
     1.28972   -0.740618   1.30443
     -0.244732  -0.450543   0.503727])
 
-@test Tracker.TrackedReal(0.8000038000134445) == Flux.mse(w, w′)
+@test Tracker.TrackedReal(0.8000038000134445) ≈ Flux.mse(w, w′)
 @test iszero(w′.grad)
 
 loss(x) = Flux.mse(w*x, w′*x)

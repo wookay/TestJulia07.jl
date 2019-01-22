@@ -1,3 +1,3 @@
 using Jive # runtests Jive.Skipped
-runtests(@__DIR__, node1=["stdlib/sharedarrays.jl"])
-!isempty(Jive.Skipped.modules) && printstyled("skipped tests: ", join(Jive.Skipped.modules, ", "), "\n", color=:yellow)
+runtests(@__DIR__, skip=["revise.jl"], node1=["stdlib/sharedarrays.jl"])
+!isempty(Jive.Skipped.expressions) && printstyled("skipped tests: ", join(Jive.Skipped.expressions, ", "), "\n", color=:yellow)

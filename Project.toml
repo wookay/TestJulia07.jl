@@ -43,6 +43,7 @@ Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 WAV = "8149f6b0-98f6-5db9-b78f-408fbbb8ef88"
 Bukdu = "3e78a19a-cc83-51d8-955b-515f39fd7955"
 Profile = "9abbd945-dff8-562f-b5e8-e1ebf5ef1b79"
+MLStyle = "816b5f4a-9e2c-11e8-0bf8-3d61c8eadc99"
 
 [targets]
 test = ["Test", "Printf", "InteractiveUtils", "LinearAlgebra", "Statistics", "Jive", "DataLogger", "Cassette", "DataStructures", "DiffResults", "DiffRules", "Distributions", "FileIO", "Flux", "ForwardDiff", "Lazy", "Metalhead", "MusicManipulations", "Observables", "PyCall", "ReverseDiff", "WAV", "DualNumbers", "Unitful", "CSTParser", "JuliaDB", "IntervalArithmetic", "URIParser", "JSON2", "BenchmarkTools", "BSON", "SparseArrays", "UMAP", "Bukdu", "Profile"]
