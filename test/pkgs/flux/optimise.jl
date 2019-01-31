@@ -31,12 +31,12 @@ for opt in (ADAGrad(), Descent(), ADAM())
     l = loss(rand(3, 3))
     Flux.back!(l)
     @test !iszero(w′.grad)
-    delta = Optimise.update!(opt, w′.data, w′.grad)
+    delta = Optimise.apply!(opt, w′.data, w′.grad)
     w′.data .-= delta
 
     l = loss(rand(3, 3))
     Flux.back!(l)
-    delta = Optimise.update!(opt, w′.data, w′.grad)
+    delta = Optimise.apply!(opt, w′.data, w′.grad)
     w′.data .-= delta
 
     @test Tracker.TrackedReal(0.8000038000134445) > Flux.mse(w, w′)

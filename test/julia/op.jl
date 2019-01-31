@@ -34,3 +34,15 @@ end
 end # if VERSION >= v"1.1.0-DEV.764"
 
 end # module test_julia_op
+
+
+module test_julia_op2
+
+using Test
+
+f(op::Union{typeof.((+, -, *, /))...}) = 1
+
+@test f(+) == f(-) == f(*) == f(/) == 1
+@test_throws MethodError f(\)
+
+end # module test_julia_op2
