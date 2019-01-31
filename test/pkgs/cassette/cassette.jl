@@ -3,6 +3,7 @@ module test_pkgs_cassette
 using Test
 using Cassette
 using Cassette: @context, overdub
+using Base.Broadcast: Broadcasted
 
 @context InferCtx
 
@@ -27,9 +28,8 @@ overdub(ctx, relulayer, 1, 2, 3)
 
 @test ctx.metadata == [
     (:posthook, relu, (convert, typeof(relu), relu)),
-    (:posthook, relu, (getproperty, Broadcast.Broadcasted(relu, (Broadcast.Broadcasted(+, (2, 3)),)), :f)),
-    (:prehook, relu, (5,)),
-    (:posthook, relu, (5, 5))
+    (:posthook, relu, (getproperty, Broadcasted(relu, (Broadcasted(+, (2, 3)),)), :f)),
+    (:prehook, relu, (5,))
 ]
 
 end # module test_pkgs_cassette
