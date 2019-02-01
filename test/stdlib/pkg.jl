@@ -17,4 +17,7 @@ pkgdir = Base.locate_package(Base.PkgId(spec.uuid, spec.name))
 
 @test basename(ctx.env.manifest_file) == "Manifest.toml"
 
+version = Pkg.API.__installed()["Jive"]
+@test version >= v"0.1.8"
+
 end # module test_stdlib_pkg

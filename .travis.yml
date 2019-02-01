@@ -6,19 +6,14 @@ language: julia
 
 julia:
   - 1.1
-  - nightly
 
 matrix:
   exclude:
-    - os: osx
-      julia: nightly
-
     - os: windows
-      julia: nightly
       language: julia
 
   include:
-    - os: osx
+    - os: linux
 
     - os: windows
       language: sh
@@ -33,9 +28,7 @@ addons:
       - python3-numpy
 
 before_script:
-  - julia --color=yes -e 'using Pkg; pkg"dev Jive"'
   - julia --color=yes -e 'using Pkg; pkg"add https://github.com/wookay/DataLogger.jl.git"'
-  - julia --color=yes -e 'using Pkg; pkg"dev Flux"'
   - julia --color=yes -e 'using Pkg; pkg"precompile"'
   - JULIA_DEBUG="all" julia --color=yes -e '@debug 1+2+3'
   -                   julia --color=yes -e '@debug 5+6+7'
