@@ -1,4 +1,50 @@
-module test_julia_pointer
+module test_julia_pointer1
+
+using Test
+
+struct D
+end
+
+struct G
+    ptr_d::Ptr{D}
+    val
+end
+
+d = D()
+refd = Ref(d)
+ptr_d = pointer_from_objref(refd)
+g = G(ptr_d, 3)
+refg = Ref(g)
+p = Ptr{Base.RefValue{G}}(pointer_from_objref(refg))
+refg2 = unsafe_load(p)
+
+@test refg2[].ptr_d == ptr_d
+@test refg2[].val == g.val
+
+struct E
+end
+
+struct H
+    ptr_d::Ptr{D}
+    val
+    ptr_e::Ptr{E}
+end
+
+e = E()
+refe = Ref(e)
+ptr_e = pointer_from_objref(refe)
+h = H(ptr_d, 3, ptr_e)
+refh = Ref(h)
+p2 = Ptr{Base.RefValue{G}}(pointer_from_objref(refh))
+refh2 = unsafe_load(p2)
+@test refh2[].ptr_d == ptr_d
+@test refh2[].val == h.val
+@test refh2[].ptr_e == ptr_e
+
+end # module test_julia_pointer1
+
+
+module test_julia_pointer2
 
 using Test
 
@@ -20,7 +66,7 @@ end # @testset "pointer"
 @testset "pointer_from_objref unsafe_pointer_to_objref" begin
 x = [1,2,3]
 p = pointer_from_objref(x)
-@test unsafe_pointer_to_objref(p::Ptr) == x
+@test unsafe_pointer_to_objref(p) == x
 end # @testset "pointer_from_objref unsafe_pointer_to_objref"
 
 
@@ -65,4 +111,4 @@ end
 @test b == 42
 end # @testset "GC.@preserve"
 
-end # module test_julia_pointer
+end # module test_julia_pointer2
