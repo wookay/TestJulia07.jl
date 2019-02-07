@@ -16,3 +16,19 @@ TV, NV = TypeVar(:T), TypeVar(:N)
 @test (T where T) === Any
 
 end # module test_julia_types
+
+
+module test_julia_datatype
+
+using Test
+using InteractiveUtils # subtypes
+
+@test typeintersect(DataType, Type) === DataType
+
+@test supertype(DataType) === Type.body
+@test subtypes(DataType) == []
+
+@test supertype(Type) === Any
+@test subtypes(Type) == [Core.TypeofBottom, DataType, Union, UnionAll]
+
+end # module test_julia_datatype
