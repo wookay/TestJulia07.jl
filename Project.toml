@@ -50,6 +50,7 @@ Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 UUIDs = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
 Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
 SharedArrays = "1a1011a3-84de-559e-8e89-a11a2f7dc383"
+Morten = "2a6d852e-3fac-5a38-885c-fe708af2d09e"
 
 [targets]
-test = ["Test", "Printf", "InteractiveUtils", "LinearAlgebra", "Statistics", "Jive", "DataLogger", "Cassette", "DataStructures", "DiffResults", "DiffRules", "Distributions", "FileIO", "Flux", "ForwardDiff", "Lazy", "Metalhead", "MusicManipulations", "Observables", "PyCall", "ReverseDiff", "WAV", "DualNumbers", "Unitful", "CSTParser", "JuliaDB", "IntervalArithmetic", "URIParser", "JSON2", "BenchmarkTools", "BSON", "SparseArrays", "UMAP", "Bukdu", "Profile", "MLStyle", "ProgressMeter", "Distributed", "Random", "UUIDs", "Libdl", "SharedArrays"]
+test = ["Test", "Printf", "InteractiveUtils", "LinearAlgebra", "Statistics", "Jive", "DataLogger", "Cassette", "DataStructures", "DiffResults", "DiffRules", "Distributions", "FileIO", "Flux", "ForwardDiff", "Lazy", "Metalhead", "MusicManipulations", "Observables", "PyCall", "ReverseDiff", "WAV", "DualNumbers", "Unitful", "CSTParser", "JuliaDB", "IntervalArithmetic", "URIParser", "JSON2", "BenchmarkTools", "BSON", "SparseArrays", "UMAP", "Bukdu", "Profile", "MLStyle", "ProgressMeter", "Distributed", "Random", "UUIDs", "Libdl", "SharedArrays", "Morten"]
