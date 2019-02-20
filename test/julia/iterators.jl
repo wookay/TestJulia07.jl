@@ -1,4 +1,4 @@
-module test_julia_iterators
+module test_julia_iterators_iterate
 
 using Test
 
@@ -27,18 +27,17 @@ vals = collect(a)
 @test :value == vals[1]
 @test_throws UndefRefError vals[2]
 
-abstract type AbstractT{V} end
+end # module test_julia_iterators_iterate
 
-struct T{V, A} <: AbstractT{V}
-    data::Vector{V}
-    T(data::A) where {A} = new{eltype(A), A}(data)
-end
 
-@test T([1, 2, 3]) isa T{Int,Vector{Int}}
-@test T(['a']) isa T{Char,Vector{Char}}
+module test_julia_iterators_iterators
+
+using Test
 
 (a, rest) = Iterators.peel("abc")
 @test a == 'a'
 @test collect(rest) == ['b', 'c']
 
-end # module test_julia_iterators
+@test collect(Iterators.product((1,2), (3,4))) == [(1, 3) (1, 4);  (2, 3)  (2, 4)]
+
+end # test_julia_iterators_iterators

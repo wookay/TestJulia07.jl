@@ -75,7 +75,20 @@ A = [4 3;
      6 3]
 @test det(A) == 4*3 - 3*6 == -6
 @test det(exp(A)) ≈ exp(tr(A)) == 1096.6331584284585
-@test tr(A) ≈ log(det(exp(A)))
+@test sum(diag(A)) == tr(A) ≈ log(det(exp(A)))
 @test tr(I - inv(A)) < tr(A - I)
 
 end # module test_stdlib_linearalgebra_det
+
+
+module test_stdlib_linearalgebra_rank
+
+using Test
+using LinearAlgebra
+
+@test rank(-5) == rank(5) == 1
+@test rank(0) == 0
+@test rank([ 0 0 0; 0 2 2; 0 3 3]) == 1
+@test rank([ 0 0 0; 0 0 2; 0 3 3]) == 2
+
+end # module test_stdlib_linearalgebra_rank

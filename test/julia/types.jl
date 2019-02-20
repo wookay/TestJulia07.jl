@@ -32,3 +32,20 @@ using InteractiveUtils # subtypes
 @test subtypes(Type) == [Core.TypeofBottom, DataType, Union, UnionAll]
 
 end # module test_julia_datatype
+
+
+module test_julia_types_eltype
+
+using Test
+
+abstract type AbstractT{V} end
+
+struct T{V, A} <: AbstractT{V}
+    data::Vector{V}
+    T(data::A) where {A} = new{eltype(A), A}(data)
+end
+
+@test T([1, 2, 3]) isa T{Int,Vector{Int}}
+@test T(['a']) isa T{Char,Vector{Char}}
+
+end # module test_julia_types_eltype

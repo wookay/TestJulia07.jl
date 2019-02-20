@@ -14,4 +14,4 @@ end
 
 @test output == "Dict{Symbol,Any}(:x => 1)"
 
-end # @If VERSION >= v"1.2.0-DEV.351" module test_julia_locals
+end # @If VERSION >= v"1.2.0-DEV.350" module test_julia_locals
