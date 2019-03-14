@@ -35,5 +35,5 @@ before_script:
   -                   julia --color=yes -e '@debug 5+6+7'
 
 script:
-  - if [[ "$TRAVIS_OS_NAME" != windows ]] ; then JIVE_PROCS=auto julia --color=yes -e 'using Pkg; Pkg.test()' ; fi
+  - if [[ "$TRAVIS_OS_NAME" != windows ]] ; then JIVE_PROCS=auto julia --color=yes --project=. -e 'using Pkg; Pkg.test()' ; fi
   - if [[ "$TRAVIS_OS_NAME" == windows ]] ; then JIVE_PROCS=auto julia --color=yes -e 'using Pkg; pkg"dev ."; pkg"test TestJulia07"' ; fi

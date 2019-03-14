@@ -9,7 +9,9 @@ function Base.iterate(::A)
     (:value, :next_state)
 end
 
+entered = []
 function Base.iterate(::A, state)
+    push!(entered, state)
     nothing
 end
 
@@ -19,6 +21,7 @@ for x in a
     push!(stack, x)
 end
 @test [:value] == stack
+@test [:next_state] == entered
 
 function Base.length(::A)
     2
