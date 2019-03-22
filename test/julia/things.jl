@@ -1,3 +1,5 @@
+module test_julia_things
+
 using Test
 
 @test something(nothing, 1) == 1
@@ -8,3 +10,7 @@ using Test
 
 @test nothing === Nothing()
 @test missing === Missing()
+
+@test_throws ArgumentError print(nothing)
+
+end # module test_julia_things
