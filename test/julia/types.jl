@@ -7,7 +7,8 @@ using Test
 
 @test typeof(Union{}) == Core.TypeofBottom
 @test typeof(Union) == DataType
-@test Union{Int} == Int
+@test Union{Int,Int} === Union{Int} === Int
+@test typeintersect(Int, Bool) === Union{} === Base.Bottom
 
 # https://docs.julialang.org/en/v1/devdocs/types/
 TV, NV = TypeVar(:T), TypeVar(:N)

@@ -13,9 +13,12 @@ expr = :( g(::Type{T}) where T <: $(esc(name)) = 0)
 #└          end)
 
 macro a()
-    @info :source __source__
-    @info :module __module__
+    (__module__, __source__)
 end
+
+(m, s) = @a()
+@test m === Main.test_julia_expr
+@test s.line == 19
 
 # Hygienic macros are macros whose expansion is guaranteed not to cause the accidental capture of identifiers.
 macro hygienex()
@@ -43,5 +46,8 @@ module test_julia_expr_gensym
 using Test
 
 @test gensym() != gensym()
+
+@gensym d
+@test d isa Symbol
 
 end # module test_julia_expr_gensym

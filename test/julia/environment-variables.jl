@@ -14,6 +14,8 @@ depot_path = read(`$julia_bin -e 'println(Base.DEPOT_PATH)'`, String)
 @test depot_path == string(repr(Base.DEPOT_PATH), "\n")
 
 empty_depot_path = read(setenv(`$julia_bin -e 'println(Base.DEPOT_PATH)'`, Dict("JULIA_DEPOT_PATH"=>"")), String)
-@test empty_depot_path == """[""]\n"""
+if VERSION >= v"1.3.0-DEV"
+    @test empty_depot_path == "String[]\n"
+end
 
 end # module test_julia_environment_variables
