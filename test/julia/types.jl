@@ -50,3 +50,27 @@ end
 @test T(['a']) isa T{Char,Vector{Char}}
 
 end # module test_julia_types_eltype
+
+
+module test_julia_types_isimmutable
+
+using Test
+
+@test isimmutable(0)
+@test isimmutable(pi)
+@test isimmutable((2,))
+@test isimmutable((a=2,))
+@test isimmutable(:a=>2)
+@test isimmutable(nothing)
+
+# mutable types
+@test !isimmutable(:abc)
+@test !isimmutable("abc")
+@test !isimmutable([])
+@test !isimmutable(Dict())
+
+mutable struct A
+end
+@test !isimmutable(A())
+
+end # module test_julia_types_isimmutable

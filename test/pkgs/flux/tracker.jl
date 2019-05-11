@@ -4,7 +4,9 @@ using Test
 
 # code from julialang slack #autodiff Mike Innes
 using Flux.Tracker
+using Flux
 
+@test Tracker.data === Flux.data
 
 f(x) = sum(x.^2)
 (g,) = Tracker.gradient(f, [1, 2, 3])
@@ -53,6 +55,5 @@ y, back = Tracker.forward(f, -2pi:2pi)
 @test back(1)[1] == g
 @test back(2)[1] == 2g
 @test back(3)[1] == 3g
-
 
 end # module test_pkgs_flux_tracker

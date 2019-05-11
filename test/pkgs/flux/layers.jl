@@ -37,21 +37,21 @@ convL = Conv((2,2), 1=>2)
 @test size(convL.weight) == (2, 2, 1, 2)
 @test convL.bias == param([0, 0])
 @test convL.stride == (1, 1)
-@test convL.pad == (0, 0)
+@test convL.pad == (0, 0, 0, 0)
 @test convL.dilation == (1, 1)
 
 
 # MaxPool(k; pad = 0, stride = k)
 maxpL = MaxPool((2,))
 @test maxpL.k == (2,)
-@test maxpL.pad == (0,)
+@test maxpL.pad == (0, 0)
 @test maxpL.stride == (2,)
 
 
 # MeanPool(k; pad = 0, stride = k)
 meanpL = MeanPool((2,))
 @test meanpL.k == (2,)
-@test meanpL.pad == (0,)
+@test meanpL.pad == (0, 0)
 @test meanpL.stride == (2,)
 
 
