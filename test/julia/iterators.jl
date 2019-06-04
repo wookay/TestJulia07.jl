@@ -33,7 +33,31 @@ vals = collect(a)
 end # module test_julia_iterators_iterate
 
 
-module test_julia_iterators_iterators
+module test_julia_iterators_iterate_dict
+
+using Test
+
+struct G
+    d::Dict
+end
+
+struct V
+    val
+end
+
+function Base.iterate(g::G, state=firstindex(g.d.vals))
+    y = iterate(g.d, state)
+    y === nothing && return nothing
+    (V(y[1]), y[2])
+end
+
+g = G(Dict(:a => 1))
+@test first(g) == V(:a => 1)
+
+end # module test_julia_iterators_iterate_dict
+
+
+module test_julia_iterators_peel
 
 using Test
 
@@ -43,7 +67,7 @@ using Test
 
 @test collect(Iterators.product((1,2), (3,4))) == [(1, 3) (1, 4);  (2, 3)  (2, 4)]
 
-end # module test_julia_iterators_iterators
+end # module test_julia_iterators_peel
 
 
 module test_julia_iterators_repeated
