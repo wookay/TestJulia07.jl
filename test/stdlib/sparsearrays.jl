@@ -16,3 +16,15 @@ B = sparsevec([3,1,4,1,5,9,2], [0,0,0,0,0,0,0])
 @test isempty(dropzeros(B).nzind)
 
 end # module test_stdlib_sparsearrays
+
+
+module test_stdlib_sparsearrays_non_numerical_data
+
+using Test
+using SparseArrays
+
+Base.zero(s::String)  = ""
+A = sparse(["a", "b"])
+@test A[1] == "a"
+
+end # module test_stdlib_sparsearrays_non_numerical_data
