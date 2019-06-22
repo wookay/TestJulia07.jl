@@ -11,4 +11,10 @@ ta = TimeArray((A=[10, 20], Index=[Date(2018, 12, 31), Date(2019, 1, 1)]); times
 @test colnames(ta) == [:A]
 @test meta(ta) === nothing
 
+ta2018 = TimeArray((A=[10], Index=[Date(2018, 12, 31)]); timestamp=:Index)
+ta2019 = TimeArray((A=[20], Index=[Date(2019, 1, 1)]); timestamp=:Index)
+@test head(ta, 1) == ta2018
+@test tail(ta, 1) == ta2019
+@test vcat(ta2018, ta2019) == ta
+
 end # module test_pkgs_timeseries

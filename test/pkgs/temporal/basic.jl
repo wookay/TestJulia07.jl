@@ -2,7 +2,7 @@ module test_pkgs_temporal
 
 using Test
 using Temporal
-using .Temporal.Dates: Date, Month
+using Dates: Date, Month
 
 ta = TS([10, 20], [Date(2018, 12, 31), Date(2019, 1, 1)])
 @test ta isa TS
