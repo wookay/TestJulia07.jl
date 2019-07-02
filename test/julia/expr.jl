@@ -8,7 +8,7 @@ expr = :( g(::Type{T}) where T <: $(esc(name)) = 0)
 #┌ Info: expr
 #│   expr =
 #│    :((g(::Type{T}) where T <: $(Expr(:escape, :GTypePlugin))) = begin
-#│              #= /Users/hulpd/.julia/dev/TestJulia07/test/expr.jl:2 =#
+#│              #= /Users/wookyoung/.julia/dev/TestJulia07/test/expr.jl:2 =#
 #│              0
 #└          end)
 
