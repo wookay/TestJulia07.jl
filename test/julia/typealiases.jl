@@ -7,7 +7,11 @@ end
 
 const GVec = Vector{G}
 
-@test sprint(show, GVec([G()])) == "Main.test_julia_typealiases.G[G()]"
+if VERSION >= v"1.2"
+    @test sprint(show, GVec([G()])) == "Main.test_julia_typealiases.G[Main.test_julia_typealiases.G()]"
+else
+    @test sprint(show, GVec([G()])) == "Main.test_julia_typealiases.G[G()]"
+end
 
 function Base.show(io::IO, v::GVec)
     print(io, "GVec", '(')
@@ -15,6 +19,10 @@ function Base.show(io::IO, v::GVec)
     print(io, ')')
 end
 
-@test sprint(show, GVec([G()])) == "GVec([G()])"
+if VERSION >= v"1.2"
+    @test sprint(show, GVec([G()])) == "GVec([Main.test_julia_typealiases.G()])"
+else
+    @test sprint(show, GVec([G()])) == "GVec([G()])"
+end
 
 end # module test_julia_typealiases

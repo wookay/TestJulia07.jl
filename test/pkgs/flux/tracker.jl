@@ -3,10 +3,8 @@ module test_pkgs_flux_tracker
 using Test
 
 # code from julialang slack #autodiff Mike Innes
-using Flux.Tracker
+using Tracker
 using Flux
-
-@test Tracker.data === Flux.data
 
 f(x) = sum(x.^2)
 (g,) = Tracker.gradient(f, [1, 2, 3])

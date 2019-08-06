@@ -58,7 +58,6 @@ meanpL = MeanPool((2,))
 # Dropout(p)
 dropL = Dropout(0.5)
 @test dropL.p == 0.5
-@test dropL.active == true
 
 
 # Recur(m, h = hidden(m))

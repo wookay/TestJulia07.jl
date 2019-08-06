@@ -1,4 +1,4 @@
-module test_pkgs_umap_neighbors
+@If VERSION < v"1.2" module test_pkgs_umap_neighbors
 
 using Test
 using UMAP # UMAP_

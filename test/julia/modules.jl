@@ -4,10 +4,12 @@ using Test
 
 module B
 export c, d
+f() = 2
 end
 
 @test [:B, :c, :d] == names(B)
 @test test_julia_modules1 === parentmodule(B)
+@test B === parentmodule(B.f)
 @test (:Main, :test_julia_modules1, :B) == fullname(B)
 @test :B == nameof(B)
 @test Base.isexported(B, :c)
