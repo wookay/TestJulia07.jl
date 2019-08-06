@@ -25,6 +25,7 @@ Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
 DualNumbers = "fa6b7ba4-c1ee-5f82-b5fc-ecf0adba8f74"
 FileIO = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
 FillArrays = "1a297f60-69ca-5386-bcde-b61e274b549b"
+Flows = "d910d432-2c57-11e9-263c-df934de6853d"
 Flux = "587475ba-b771-5e3f-ad9e-33799f191a9c"
 ForwardDiff = "f6369f11-7733-5829-9624-2563aa707210"
 InteractiveUtils = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
@@ -63,4 +64,4 @@ Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 WAV = "8149f6b0-98f6-5db9-b78f-408fbbb8ef88"
 
 [targets]
-test = ["Test", "Printf", "InteractiveUtils", "LinearAlgebra", "Statistics", "Jive", "DataLogger", "Cassette", "DataStructures", "DiffResults", "DiffRules", "Distributions", "FileIO", "Flux", "ForwardDiff", "Lazy", "Metalhead", "MusicManipulations", "Observables", "PyCall", "ReverseDiff", "WAV", "DualNumbers", "Unitful", "CSTParser", "IntervalArithmetic", "URIParser", "JSON2", "BenchmarkTools", "BSON", "SparseArrays", "UMAP", "Bukdu", "Profile", "MLStyle", "ProgressMeter", "Distributed", "Random", "UUIDs", "Libdl", "SharedArrays", "Morton", "TableReader", "DataFrames", "CSV", "DelimitedFiles", "JSON", "Temporal", "TimeSeries", "IntervalSets", "FillArrays"]
+test = ["BSON", "BenchmarkTools", "Bukdu", "CSTParser", "CSV", "Cassette", "DataFrames", "DataLogger", "DataStructures", "DelimitedFiles", "DiffResults", "DiffRules", "Distributed", "Distributions", "DualNumbers", "FileIO", "FillArrays", "Flows", "Flux", "ForwardDiff", "InteractiveUtils", "IntervalArithmetic", "IntervalSets", "JSON", "JSON2", "Jive", "Lazy", "Libdl", "LinearAlgebra", "MLStyle", "Metalhead", "Morton", "MusicManipulations", "Observables", "Printf", "Profile", "ProgressMeter", "PyCall", "Random", "ReverseDiff", "SharedArrays", "SparseArrays", "Statistics", "TableReader", "Temporal", "Test", "TimeSeries", "UMAP", "URIParser", "UUIDs", "Unitful", "WAV"]
