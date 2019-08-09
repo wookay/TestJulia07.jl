@@ -28,6 +28,7 @@ before_script:
   - julia --color=yes --project -e 'using Pkg; pkg"dev Metalhead"'
   - julia --color=yes --project -e 'using Pkg; pkg"dev Images"'
   - julia --color=yes --project -e 'using Pkg; pkg"add https://github.com/wookay/DataLogger.jl.git"'
+  - julia --color=yes --project -e 'using Pkg; pkg"add https://github.com/gasagna/Flows.jl.git"'
   - julia --color=yes --project -e 'using Pkg; pkg"instantiate"; pkg"precompile"'
   - JULIA_DEBUG="all" julia --color=yes -e '@debug 1+2+3'
   -                   julia --color=yes -e '@debug 5+6+7'
