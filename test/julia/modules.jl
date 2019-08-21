@@ -71,3 +71,14 @@ m = Base.require(Base.PkgId(
 @test m isa Module
 
 end # module test_julia_modules4
+
+
+module test_julia_loaded_modules
+
+pkg = Base.PkgId(Base.UUID("8dfed614-e22c-5e08-85e1-65c5234f0b40"), "Test")
+loaded = Base.loaded_modules[pkg]
+using .loaded
+
+@test loaded === Test
+
+end # module test_julia_loaded_modules

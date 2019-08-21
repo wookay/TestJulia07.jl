@@ -6,16 +6,12 @@ language: julia
 
 os:
   - linux
-  - osx
-  - windows
+#  - osx
+#  - windows
 
 julia:
-  - 1.1
-
-matrix:
-  include:
-    - os: linux
-      julia: 1.3
+  - 1.2
+  - 1.3
 
 addons:
   apt:
@@ -24,6 +20,8 @@ addons:
       - python3-numpy
 
 before_script:
+  - julia --color=yes --project -e 'using Pkg; pkg"add PyCall"; pkg"build PyCall"'
+  - julia --color=yes --project -e 'using Pkg; pkg"dev Jive"' # Jive v0.1.14
   - julia --color=yes --project -e 'using Pkg; pkg"add Flux#zygote"'
   - julia --color=yes --project -e 'using Pkg; pkg"dev Metalhead"'
   - julia --color=yes --project -e 'using Pkg; pkg"dev Images"'

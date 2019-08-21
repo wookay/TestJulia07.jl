@@ -11,6 +11,8 @@ using Test
 @test nothing === Nothing()
 @test missing === Missing()
 
-@test_throws ArgumentError print(nothing)
+if VERSION < v"1.3.0-rc"
+    @test_throws ArgumentError print(nothing)
+end
 
 end # module test_julia_things

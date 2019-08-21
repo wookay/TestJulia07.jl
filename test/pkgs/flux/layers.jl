@@ -2,7 +2,6 @@ module test_pkgs_flux_layers
 
 using Test
 using Flux
-using Flux: param
 using Random
 
 Random.seed!(0)
@@ -11,31 +10,31 @@ Random.seed!(0)
 denseL = Dense(1, 2)
 # Flux/util.jl
 # glorot_uniform(dims...) = (rand(Float32, dims...) .- 0.5f0) .* sqrt(24.0f0/sum(dims))
-@test denseL.W ≈ param([0.7760091f0; 0.74028003f0])
-@test denseL.b == param(zeros(2))
+@test denseL.W ≈ [0.7760091f0; 0.74028003f0]
+@test denseL.b == zeros(2)
 @test denseL.σ == identity
 
 
 c = Chain(denseL)
 @test c.layers == (denseL,)
-@test c([1]) == c.layers[1]([1]) == param([0.7760091f0; 0.74028003f0])
+@test c([1]) == c.layers[1]([1]) == [0.7760091f0; 0.74028003f0]
 @test size(c([1])) == (2,)
 
 
 # Diagonal(in::Integer)
 diagL = Flux.Diagonal(3)
-@test diagL([5 6 7 8 9;]) == param([
+@test diagL([5 6 7 8 9;]) == [
  5.0  6.0  7.0  8.0  9.0
  5.0  6.0  7.0  8.0  9.0
  5.0  6.0  7.0  8.0  9.0
-])
+]
 
 
 # Conv(size, in=>out, σ=relu, stride=1, pad=0, dilation=1) 
 convL = Conv((2,2), 1=>2)
 @test convL.σ == identity
 @test size(convL.weight) == (2, 2, 1, 2)
-@test convL.bias == param([0, 0])
+@test convL.bias == [0, 0]
 @test convL.stride == (1, 1)
 @test convL.pad == (0, 0, 0, 0)
 @test convL.dilation == (1, 1)
