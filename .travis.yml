@@ -14,9 +14,8 @@ julia:
 
 before_script:
   - julia --color=yes -e 'using Pkg; pkg"registry add https://github.com/JuliaRegistries/General.git"'
-  - julia --color=yes -e 'using Pkg; pkg"registry add https://github.com/wookay/Registro.git"'
-  - julia --color=yes -e 'using Pkg; pkg"up"'
-  - julia --color=yes --project=. -e 'using Pkg; pkg"dev Flux"; pkg"dev Metalhead"'
+  - julia --color=yes --project=. -e 'using Pkg; pkg"registry add https://github.com/wookay/Registro.git"'
+  - julia --color=yes --project=. -e 'using Pkg; pkg"up"'
   - julia --color=yes --project=. -e 'using Pkg; pkg"instantiate"; pkg"precompile"'
   - JULIA_DEBUG="all" julia --color=yes -e '@debug 1+2+3'
   -                   julia --color=yes -e '@debug 5+6+7'
