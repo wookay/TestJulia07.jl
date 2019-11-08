@@ -21,4 +21,19 @@ s = first(split("a,b", ","))
 ['1'  '2'  '3'  '1'  '2'  '3'
  '1'  '2'  '3'  '1'  '2'  '3']
 
+@test occursin("app", "apple")
+
+buf = Base.SecretBuffer("hello")
+@test read(buf, String) == "hello"
+@test read(buf, String) == ""
+
+seekstart(buf)
+@test read(buf, String) == "hello"
+
+Base.shred!(buf)
+@test Base.isshredded(buf)
+
+seekstart(buf)
+@test read(buf, String) == ""
+
 end # module test_julia_strings

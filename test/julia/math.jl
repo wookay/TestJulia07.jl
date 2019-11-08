@@ -6,4 +6,10 @@ using Test
 
 @test 0.99999999 ≈ 1
 
+# Hodge star operator
+@test Symbol(Char(0x22c6)) === :⋆
+
+⋆(n) = n
+@test ⋆(1) == 1
+
 end # Base.Math.FMA_NATIVE

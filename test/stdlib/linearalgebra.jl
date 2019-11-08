@@ -1,32 +1,25 @@
-module test_stdlib_linearalgebra_cholesky
+# https://github.com/wookay/Flora.jl/tree/master/test/linearalgebra
+
+module test_stdlib_linearalgebra_det
 
 using Test
 using LinearAlgebra
 
-# https://en.wikipedia.org/wiki/Cholesky_decomposition#Example
+A = [4 3;
+     6 3]
+
+@test det(A) == 4*3 - 3*6 == -6
+@test det(exp(A)) ≈ exp(tr(A)) == 1096.6331584284585
+@test sum(diag(A)) == tr(A) ≈ log(det(exp(A)))
+@test tr(I - inv(A)) < tr(A - I)
 
 A = [  4  12 -16;
       12  37 -43;
      -16 -43  98]
+@test det(A) ≈ 36
+@test det(2A) ≈ 288
 
-@test UpperTriangular(A) ==
-      triu(A) ==
-                            [  4  12 -16;
-                               0  37 -43;
-                               0   0  98]
-
-@test LowerTriangular(A) ==
-      tril(A) ==
-                            [  4   0   0;
-                              12  37   0;
-                             -16 -43  98]
-@test issymmetric(A)
-@test A' == adjoint(A) == transpose(A) == A
-
-C = cholesky(A)
-@test C.L * C.U == A
-
-end # module test_stdlib_linearalgebra_cholesky
+end # module test_stdlib_linearalgebra_det
 
 
 module test_stdlib_linearalgebra_eigen
@@ -39,8 +32,10 @@ A = [  4  12 -16;
      -16 -43  98]
 
 E1 = eigen(A)
-E2 = eigen(2*A)
-@test 2*E1.values == E2.values
+E2 = eigen(2A)
+@test E1.values == [0.018804980460810916, 15.5039632294076, 123.47723179013143]
+@test E2.values == [0.03760996092162183 , 31.0079264588152, 246.95446358026285]
+@test 2 * E1.values == E2.values
 @test E1.vectors == E2.vectors
 
 end # module test_stdlib_linearalgebra_eigen
@@ -64,21 +59,6 @@ A = [  4  12 -16;
 @test I + A == Diagonal([1, 1, 1]) + A
 
 end # module test_stdlib_linearalgebra_diagonal
-
-
-module test_stdlib_linearalgebra_det
-
-using Test
-using LinearAlgebra
-
-A = [4 3;
-     6 3]
-@test det(A) == 4*3 - 3*6 == -6
-@test det(exp(A)) ≈ exp(tr(A)) == 1096.6331584284585
-@test sum(diag(A)) == tr(A) ≈ log(det(exp(A)))
-@test tr(I - inv(A)) < tr(A - I)
-
-end # module test_stdlib_linearalgebra_det
 
 
 module test_stdlib_linearalgebra_rank

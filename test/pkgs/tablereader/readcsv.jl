@@ -1,4 +1,5 @@
-module test_pkgs_tablereader
+using Jive
+@If VERSION < v"1.2" module test_pkgs_tablereader
 
 using TableReader
 using Test
@@ -9,7 +10,7 @@ col1,col2,col3
 -10,-99,0
 """)
 df = readcsv(buffer)
-@test df[:col3] == [456, 0]
+@test df[!, :col3] == [456, 0]
 @test collect(df[1,:]) == [1,23,456]
 
 end # module test_pkgs_tablereader

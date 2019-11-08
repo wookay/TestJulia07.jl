@@ -5,8 +5,12 @@ using Test
 @test Base.uniontypes(Int) == [Int]
 @test Base.uniontypes(Union{Int,String}) == [Int,String]
 
-@test typeof(Union{}) == Core.TypeofBottom
-@test typeof(Union) == DataType
+@test typeof(Type{String}) === DataType
+@test typeof(Type{<:AbstractString}) === UnionAll
+@test typeof(String) === DataType
+@test typeof(UnionAll) === DataType
+@test typeof(Union) === DataType
+@test typeof(Union{}) === Core.TypeofBottom
 @test Union{Int,Int} === Union{Int} === Int
 @test typeintersect(Int, Bool) === Union{} === Base.Bottom
 
@@ -15,6 +19,7 @@ TV, NV = TypeVar(:T), TypeVar(:N)
 @test string(Array{TV,NV}) == "Array{T,N}"
 
 @test (T where T) === Any
+@test (+)::typeof(+) === +
 
 end # module test_julia_types
 

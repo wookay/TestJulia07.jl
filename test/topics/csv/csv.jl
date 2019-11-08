@@ -1,9 +1,7 @@
+module test_topics_csv
+
 using Test
-
 path = normpath(@__DIR__, "sample.csv")
-
-using TableReader: readcsv
-df1 = readcsv(path, delim='\t')
 
 using DelimitedFiles: readdlm
 (data, hdr) = readdlm(path, header=true)
@@ -13,4 +11,18 @@ using DelimitedFiles: readdlm
 using CSV
 using DataFrames: DataFrame
 df2 = CSV.File(path, delim='\t') |> DataFrame
+@test df2[!, :col1] == [1, -10]
+
+end # module test_topics_csv
+
+
+using Jive
+@If VERSION < v"1.2" module test_topics_csv_tablereader
+
+using ..test_topics_csv: df2, path
+using Test
+using TableReader: readcsv
+df1 = readcsv(path, delim='\t')
 @test df1 == df2
+
+end # module test_topics_csv_tablereader

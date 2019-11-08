@@ -27,4 +27,7 @@ end
 @test execute([(a=1, b=2)]) == 2
 @test execute([(c=1, d=2)]) == 1
 
+str(a; b="$a") = b
+@test str(42) == "42"
+
 end # module test_julia_functions
