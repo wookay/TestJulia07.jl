@@ -30,4 +30,7 @@ end
 str(a; b="$a") = b
 @test str(42) == "42"
 
+h(; kwargs...) = kwargs
+@test h(a=1, b="").data.a == 1
+
 end # module test_julia_functions

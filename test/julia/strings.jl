@@ -36,4 +36,10 @@ Base.shred!(buf)
 seekstart(buf)
 @test read(buf, String) == ""
 
+@test length("가") == 1
+@test collect("가") == ['가']
+
+@test ncodeunits("가") == 3
+@test codeunits("가") == [0xea, 0xb0, 0x80]
+
 end # module test_julia_strings
