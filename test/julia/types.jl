@@ -79,3 +79,26 @@ end
 @test !isimmutable(A())
 
 end # module test_julia_types_isimmutable
+
+
+module test_julia_types_tuple
+
+using Test
+
+@test Tuple{Int,Int} <: Tuple
+@test Tuple{Int,Int} <: Tuple{T,T} where T
+@test !(Tuple{Real,Real} <: Tuple{T,T} where T) # diagonal variables
+@test Tuple{Real} <: Tuple{T} where T # not diagonal
+@test Tuple{Int,Int} <: (Tuple{T,T} where T) <: Tuple
+@test NTuple{2,Int} <: Tuple{T,T} where T
+@test NTuple{2,Int} <: Tuple{T,T} where T
+@test !(Tuple{Int,String} <: Tuple{T,T} where T)
+
+@test (Tuple{T} where T) <: Tuple{Vararg{T} where T}
+@test (Tuple{T,T} where T) <: Tuple{Vararg{T}} where T
+@test Tuple{Int,String} <: Tuple{Vararg{T} where T}
+
+f(x::T, y::T) where {T} = 0
+@test methods(f, Tuple{T,T} where T).mt.name === :f
+
+end # module test_julia_types_tuple

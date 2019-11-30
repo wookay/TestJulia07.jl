@@ -17,6 +17,8 @@ module test_julia_tuples_front_tail
 using Test
 
 @test Base.front((1,)) == ()
+@test Base.front((1,2,3)) == (1, 2)
 @test Base.tail((1,)) == ()
+@test Base.tail((1,2,3)) == (2, 3)
 
 end # module test_julia_tuples_front_tail
