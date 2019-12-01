@@ -15,4 +15,6 @@ f() = rand() > .5 ? 0 : 0.
     end
 end
 
+@test length(GenericString("a")) == 1
+
 end # module test_stdlib_test

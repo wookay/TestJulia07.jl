@@ -23,15 +23,10 @@ A = [6, 5, 4, 3, 2, 1]
 end # module test_julia_array
 
 
-using Jive
-@If VERSION >= v"1.1.0-DEV.792" module test_julia_array_eachrow
+module test_julia_array_hcat
 
 using Test
 
-A = [1 2;
-     3 4;
-     5 6]
-@test collect(eachrow(A)) == [[1, 2], [3, 4], [5, 6]]
-@test collect(eachcol(A)) == [[1, 3, 5], [2, 4, 6]]
+@test hcat([1,2,3]...) == reduce(hcat, [1,2,3]) == [1 2 3]
 
-end # @If VERSION >= v"1.1.0-DEV.792" module test_julia_array_eachrow
+end # module test_julia_array_hcat
