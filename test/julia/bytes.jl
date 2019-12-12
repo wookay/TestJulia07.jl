@@ -15,6 +15,6 @@ module test_julia_bytes_b_str
 
 using Test
 
-@test b"hello" == @b_str("hello") == [0x68, 0x65, 0x6c, 0x6c, 0x6f] 
+@test b"hello" == @b_str("hello") == [0x68, 0x65, 0x6c, 0x6c, 0x6f]
 
 end # module test_julia_bytes_b_str
