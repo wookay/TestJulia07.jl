@@ -1,4 +1,4 @@
-module test_julia_macro
+module test_julia_macro_emoji
 
 using Test
 
@@ -18,4 +18,4 @@ end
 f = @🤔 🍞 ∘ 🚗
 @test f('🌀') == ('🌀', '🌀')
 
-end # module test_julia_macro
+end # module test_julia_macro_emoji
