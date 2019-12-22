@@ -15,4 +15,6 @@ values = ["1", "2"]
 nt = NamedTuple{Symbol.(tuple(keys...))}(values)
 @test nt == (a="1", b="2")
 
+@test NamedTuple{(:a,:b), Tuple{Int, NamedTuple{(:c,)}}}((a=1, b=(c=1,))) == (a=1, b=(c=1,))
+
 end # module test_julia_namedtuples

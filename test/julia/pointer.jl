@@ -97,6 +97,7 @@ fa = @cfunction(foo, Int, (Int, Int))
 
 # @cfunction(\$callable, ReturnType, (ArgumentTypes...,)) -> CFunction
 fb = @cfunction($foo, Int, (Int, Int))
+@test fb isa Base.CFunction
 @test ccall(Base.unsafe_convert(Ptr{Cvoid}, fb), Int, (Int,Int), 1, 2) == 3
 end # @testset "@cfunction"
 

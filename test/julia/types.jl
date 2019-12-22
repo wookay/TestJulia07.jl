@@ -102,3 +102,16 @@ f(x::T, y::T) where {T} = 0
 @test methods(f, Tuple{T,T} where T).mt.name === :f
 
 end # module test_julia_types_tuple
+
+
+module test_julia_types_union
+
+using Test
+
+f(x::Int, y::Int) = :int
+f(x::Union{Int,String}, y::Union{Int,String}) = :union
+
+@test f(1, 2) === :int
+@test f(1, "") === :union
+
+end # module test_julia_types_union
