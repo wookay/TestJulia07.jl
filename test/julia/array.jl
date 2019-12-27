@@ -30,3 +30,12 @@ using Test
 @test hcat([1,2,3]...) == reduce(hcat, [1,2,3]) == [1 2 3]
 
 end # module test_julia_array_hcat
+
+
+module test_julia_array_broadcast
+
+using Test
+
+@test (["a","b","c"] .=> [1,2,3]) == ["a"=>1, "b"=>2, "c"=>3]
+
+end # module test_julia_array_broadcast
