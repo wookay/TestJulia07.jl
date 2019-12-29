@@ -29,3 +29,17 @@ using Test
 @test leading_zeros(UInt8(0b01111111)) == 1
 
 end # module test_julia_int
+
+
+module test_julia_integer
+
+using Test
+
+f(n::Integer) = (:integer, n)
+@test f(1) == (:integer, 1)
+
+f(n::Int) = (:int, n)
+@test f(1) == (:int, 1)
+@test f(true) == (:integer, true)
+
+end # module test_julia_integer
