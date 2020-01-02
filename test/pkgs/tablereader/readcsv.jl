@@ -1,5 +1,5 @@
 using Jive
-@If VERSION < v"1.2" module test_pkgs_tablereader
+@skip module test_pkgs_tablereader
 
 using TableReader
 using Test

@@ -17,7 +17,7 @@ end # module test_topics_csv
 
 
 using Jive
-@If VERSION < v"1.2" module test_topics_csv_tablereader
+@skip module test_topics_csv_tablereader
 
 using ..test_topics_csv: df2, path
 using Test
