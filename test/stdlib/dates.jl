@@ -19,6 +19,9 @@ dt = parse(DateTime, created_at, RFC3339)
 @test Year(2019) isa DatePeriod
 @test Hour(10) isa TimePeriod
 
+@test dayname(dt) == dayname(dayofweek(dt)) == "Saturday"
+@test join(dayname.(1:7), ", ") == "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday"
+
 end # module test_julia_dates
 
 

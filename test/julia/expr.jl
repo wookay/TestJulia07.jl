@@ -1,4 +1,4 @@
-module test_julia_expr
+module test_julia_expr_hygiene
 
 using Test
 
@@ -17,7 +17,7 @@ macro a()
 end
 
 (m, s) = @a()
-@test m === Main.test_julia_expr
+@test m === Main.test_julia_expr_hygiene
 @test s.line == 19
 
 # Hygienic macros are macros whose expansion is guaranteed not to cause the accidental capture of identifiers.
@@ -38,7 +38,7 @@ x = 1
 #@info :escx x
 @test x == 0
 
-end # module test_julia_expr
+end # module test_julia_expr_hygiene
 
 
 module test_julia_expr_gensym
@@ -96,3 +96,13 @@ eval(expr2)
 @test g8(a=2, y=1) == Dict{Symbol, Any}(:a => 2, :y => 1)
 
 end # module test_julia_expr_kw
+
+
+module test_julia_expr2
+
+using Test
+
+@test :(+) isa Symbol
+@test :(+ +) isa Expr
+
+end # module test_julia_expr2
