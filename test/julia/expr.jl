@@ -104,5 +104,6 @@ using Test
 
 @test :(+) isa Symbol
 @test :(+ +) isa Expr
+@test :(- -) isa Expr
 
 end # module test_julia_expr2

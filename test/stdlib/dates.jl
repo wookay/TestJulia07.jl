@@ -20,25 +20,6 @@ dt = parse(DateTime, created_at, RFC3339)
 @test Hour(10) isa TimePeriod
 
 @test dayname(dt) == dayname(dayofweek(dt)) == "Saturday"
-@test join(dayname.(1:7), ", ") == "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday"
+@test join(dayname.(Dates.Mon:Dates.Sun), ", ") == "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday"
 
 end # module test_julia_dates
-
-
-using Jive
-@If VERSION >= v"1.3" module test_julia_dates_am_pm
-
-using Test
-using Dates
-
-df = DateFormat("u dd, yyyy HH:MM:SS p")
-
-dt = parse(DateTime, "Dec 20, 2019 6:37:10 AM", df)
-@test dt == DateTime(2019, 12, 20, 6, 37, 10)
-
-dt = parse(DateTime, "Dec 20, 2019 6:37:10 PM", df)
-@test dt == DateTime(2019, 12, 20, 18, 37, 10)
-
-@test Dates.format(Time(Nanosecond(Minute(62))), "HH:MM") == "01:02"
-
-end # @If VERSION >= v"1.3" module test_julia_dates_am_pm
