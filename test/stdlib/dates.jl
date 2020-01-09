@@ -22,4 +22,6 @@ dt = parse(DateTime, created_at, RFC3339)
 @test dayname(dt) == dayname(dayofweek(dt)) == "Saturday"
 @test join(dayname.(Dates.Mon:Dates.Sun), ", ") == "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday"
 
+@test length(January:December) == 12
+
 end # module test_julia_dates
