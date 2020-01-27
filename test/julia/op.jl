@@ -46,3 +46,28 @@ f(op::Union{typeof.((+, -, *, /))...}) = 1
 @test_throws MethodError f(\)
 
 end # module test_julia_op2
+
+
+module test_julia_plus
+
+using Test
+
+module A
+    + = 3
+end
+
+module B
+end
+
+module C
+    + = 3
+module D
+end
+end
+
+@test A.:+ == 3
+@test B.:+ == Base.:+
+@test A.:+ != B.:+
+@test C.:+ != C.D.:+
+
+end # module test_julia_plus

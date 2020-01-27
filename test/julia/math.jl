@@ -12,4 +12,9 @@ using Test
 ⋆(n) = n
 @test ⋆(1) == 1
 
+@test sqrt(2) == hypot(1, 1)
+@test sqrt(5) == hypot(2, 1) == hypot(1, 2)
+@test sqrt(8) == hypot(2, 2)
+@test 3.0 == hypot(2, 1, 2)
+
 end # Base.Math.FMA_NATIVE

@@ -24,4 +24,9 @@ dt = parse(DateTime, created_at, RFC3339)
 
 @test length(January:December) == 12
 
+@test Date(0) == Date(0, 1, 1)
+@test Date(1) == Date(1, 1, 1)
+@test Time(0) == Time(0, 0, 0)
+@test Time(1) == Time(1, 0, 0)
+
 end # module test_julia_dates
