@@ -39,3 +39,18 @@ using Test
 @test (["a","b","c"] .=> [1,2,3]) == ["a"=>1, "b"=>2, "c"=>3]
 
 end # module test_julia_array_broadcast
+
+
+module test_julia_array_bool
+
+using Test
+
+@test !([] isa Array{Bool})
+@test !([1] isa Array{Bool})
+@test Bool[] isa Array{Bool}
+@test Bool[1] isa Array{Bool}
+@test [true] isa Array{Bool}
+@test [true false] isa Array{Bool}
+@test_throws InexactError Bool[2] isa Array{Bool}
+
+end # module test_julia_array_bool
