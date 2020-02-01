@@ -9,4 +9,6 @@ using Base.Cartesian: @ntuple
 
 @test add_tuples((1,2,3), (4,5,6)) == (5, 7, 9)
 
+@test ntuple(x->2x, 5) == (2, 4, 6, 8, 10)
+
 end
