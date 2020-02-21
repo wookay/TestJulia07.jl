@@ -14,9 +14,11 @@ end
 
 
 f(x) = @match x begin
-    ::String           => "is string"
-    _                  => "is any"
+    ::String    => "isa String"
+    ::Type{Int} => "isa Type{Int}"
+    _           => "isa Any"
 end
-@test f("hi") == "is string"
+@test f("hi") == "isa String"
+@test f(Int) == "isa Type{Int}"
 
 end # module test_pkgs_mlstyle_adt

@@ -18,3 +18,12 @@ using Test
 @test 3.0 == hypot(2, 1, 2)
 
 end # Base.Math.FMA_NATIVE
+
+
+module test_julia_math_hypot
+
+using Test
+
+@test hypot(3, 4) == 5
+
+end # module test_julia_math_hypot
