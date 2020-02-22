@@ -82,3 +82,33 @@ using .loaded
 @test loaded === Test
 
 end # module test_julia_loaded_modules
+
+
+module test_julia_modules_macro
+
+using Test
+
+macro m()
+    __module__
+end
+
+@test (@__MODULE__) == (@m) == test_julia_modules_macro
+
+end # module test_julia_modules_macro
+
+
+module test_julia_anonymous_module
+
+using Test
+
+m = Module()
+@test m isa Module
+@test nameof(m) === :anonymous
+@test names(m, all=true, imported=true) == [:anonymous]
+
+GC.@preserve m begin
+    f = Base.eval(m, (x) -> 2x)
+    @test f(3) == 6
+end
+
+end # module test_julia_anonymous_module
