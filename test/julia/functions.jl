@@ -34,3 +34,29 @@ h(; kwargs...) = kwargs
 @test h(a=1, b="").data.a == 1
 
 end # module test_julia_functions
+
+
+module test_julia_functions_return
+
+using Test
+
+function f()
+    a::Float32 = 1
+    a
+end
+
+function g()
+    a::Float32 = 0.0
+    a = 1
+    a
+end
+
+function h()
+    a::Float32 = 1
+end
+
+@test f() isa Float32
+@test g() isa Float32
+@test h() isa Int
+
+end # function test_julia_functions_return
