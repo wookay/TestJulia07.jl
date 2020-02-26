@@ -113,3 +113,13 @@ end
 end # @testset "GC.@preserve"
 
 end # module test_julia_pointer2
+
+
+module test_julia_pointer3
+
+using Test
+
+p = Ptr{Cvoid}(UInt(0x03))
+@test UInt32(UInt(p)) == 0x03
+
+end # module test_julia_pointer3
