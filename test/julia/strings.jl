@@ -40,6 +40,8 @@ seekstart(buf)
 @test collect("가") == ['가']
 
 @test ncodeunits("가") == 3
-@test codeunits("가") == [0xea, 0xb0, 0x80]
+@test codeunits("가")    == b"가"    == Vector{UInt8}("가")    == [0xea, 0xb0, 0x80]
+@test codeunits("apple") == b"apple" == Vector{UInt8}("apple") == [0x61, 0x70, 0x70, 0x6c, 0x65]
+@test collect("apple") == ['a', 'p', 'p', 'l', 'e']
 
 end # module test_julia_strings

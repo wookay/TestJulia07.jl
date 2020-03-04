@@ -60,3 +60,20 @@ end
 @test h() isa Int
 
 end # function test_julia_functions_return
+
+
+module test_julia_functions_inner
+
+using Test
+
+function f(val=true)
+    function g()
+        val = false
+    end
+    g()
+    val
+end
+
+@test f() == false
+
+end # module test_julia_functions_inner

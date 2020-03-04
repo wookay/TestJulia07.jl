@@ -1,5 +1,3 @@
-# https://github.com/wookay/Flora.jl/tree/master/test/linearalgebra
-
 module test_stdlib_linearalgebra_det
 
 using Test
@@ -103,3 +101,37 @@ C = cholesky(A)
 @test C.L * C.U == A
 
 end # module test_stdlib_linearalgebra_cholesky
+
+
+module test_stdlib_linearalgebra_dot
+
+using Test
+using LinearAlgebra
+
+@test dot([1, 3, -5], [4, -2, -1]) == 3
+# 1 * 4 + 3 * -2 + -5 * -1
+
+end # module test_stdlib_linearalgebra_dot
+
+
+module test_stdlib_linearalgebra_cross
+
+using Test
+using LinearAlgebra
+
+@test cross([2, 3, 4], [5, 6, 7]) == [-3, 6, -3]
+# 3 * 7 - 4 * 6
+# 4 * 5 - 2 * 7
+# 2 * 6 - 3 * 5
+
+end # module test_stdlib_linearalgebra_cross
+
+
+module test_stdlib_linearalgebra_norm
+
+using Test
+using LinearAlgebra
+
+@test (norm ∘ normalize)(rand(10)) ≈ 1
+
+end # module test_stdlib_linearalgebra_norm

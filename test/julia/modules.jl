@@ -112,3 +112,16 @@ GC.@preserve m begin
 end
 
 end # module test_julia_anonymous_module
+
+
+module test_julia_plus
+
+using Test
+
+module M
+    + = 3
+end
+
+@test (+) !== (M.:+)
+
+end # module test_julia_plus
