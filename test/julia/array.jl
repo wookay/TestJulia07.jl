@@ -54,3 +54,15 @@ using Test
 @test_throws InexactError Bool[2] isa Array{Bool}
 
 end # module test_julia_array_bool
+
+
+module test_julia_array_indices
+
+using Test
+
+A = Matrix(reshape(1:16, (4,4)))
+
+@test LinearIndices(A)[2,2] == LinearIndices(A)[6] == 6
+@test CartesianIndices(A)[2,2] == CartesianIndices(A)[CartesianIndex(2,2)] == CartesianIndex(2,2)
+
+end #  module test_julia_array_indices
