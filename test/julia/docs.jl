@@ -1,7 +1,6 @@
 module test_julia_docs
 
 using Test
-using Base.Docs
 
 "hello"
 A
@@ -12,6 +11,8 @@ struct A
 end
 
 @test isdefined(@__MODULE__, :A)
-@test string(Docs.doc(A)) == "hello\n"
+@test string(Base.Docs.doc(A)) == "hello\n"
+
+@test (:if, :else) ⊆ keys(Base.Docs.keywords)
 
 end # module test_julia_docs

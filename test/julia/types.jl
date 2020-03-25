@@ -117,3 +117,33 @@ f(x::Union{Int,String}, y::Union{Int,String}) = :union
 @test ((+)::typeof(+))(1, 2) == 3
 
 end # module test_julia_types_union
+
+
+module test_julia_types_param
+
+using Test
+
+abstract type Result end
+
+struct OK <: Result
+    result
+end
+
+struct Fail <: Result
+    result
+end
+
+struct A{S}
+end
+
+f(::A{:a}) = OK(:a)
+f(::A{:b}) = OK(:b)
+
+@test f(A{:a}()) == OK(:a)
+@test f(A{:b}()) == OK(:b)
+
+f(::A{X}) where X = Fail(X)
+
+@test f(A{:c}()) == Fail(:c)
+
+end # module test_julia_types_param
