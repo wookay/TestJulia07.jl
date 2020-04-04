@@ -15,4 +15,6 @@ end
 t = @async "world"
 @test fetch(t) == "world"
 
+@test endswith(task_local_storage(:SOURCE_PATH), "task.jl")
+
 end # module test_julia_task
