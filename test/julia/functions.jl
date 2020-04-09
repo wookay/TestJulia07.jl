@@ -77,3 +77,13 @@ end
 @test f() == false
 
 end # module test_julia_functions_inner
+
+
+module test_julia_functions_anonymous
+
+using Test
+
+@test (() -> 1)()   == 1
+@test ((x) -> x)(1) == 1
+
+end # test_julia_functions_anonymous
