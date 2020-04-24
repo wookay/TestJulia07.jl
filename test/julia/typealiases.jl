@@ -7,8 +7,8 @@ end
 
 const GVec = Vector{G}
 
-if VERSION >= v"1.2"
-    @test sprint(show, GVec([G()])) == "Main.test_julia_typealiases.G[Main.test_julia_typealiases.G()]"
+if VERSION >= v"1.4"
+    @test sprint(show, GVec([G()])) == "[Main.test_julia_typealiases.G()]"
 else
     @test sprint(show, GVec([G()])) == "Main.test_julia_typealiases.G[G()]"
 end
