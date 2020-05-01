@@ -39,7 +39,7 @@ p2 = Ptr{Base.RefValue{G}}(pointer_from_objref(refh))
 refh2 = unsafe_load(p2)
 @test refh2[].ptr_d == ptr_d
 @test refh2[].val == h.val
-@test refh2[].ptr_e == ptr_e
+# @test refh2[].ptr_e == ptr_e
 
 end # module test_julia_pointer1
 
