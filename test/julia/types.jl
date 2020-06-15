@@ -147,3 +147,21 @@ f(::A{X}) where X = Fail(X)
 @test f(A{:c}()) == Fail(:c)
 
 end # module test_julia_types_param
+
+
+module test_julia_types_struct
+
+using Test
+using ..test_julia_types_param
+
+struct A
+    a::test_julia_types_param.OK
+end
+
+struct B
+    f::typeof(push!)
+end
+
+@test B(push!).f === push!
+
+end # module test_julia_types_struct

@@ -22,4 +22,7 @@ f(; kwargs...) = kwargs
 @test  (; a=2, b=3) ==  (; :a=>2, :b=>3)
 @test (; f(; a=2, b=3)...) == (; a=2, b=3) == (a=2, b=3)
 
+name = "a"
+@test NamedTuple{(Symbol(name),)}(2) == (a=2,)
+
 end # module test_julia_namedtuples
