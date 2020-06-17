@@ -44,4 +44,13 @@ seekstart(buf)
 @test codeunits("apple") == b"apple" == Vector{UInt8}("apple") == [0x61, 0x70, 0x70, 0x6c, 0x65]
 @test collect("apple") == ['a', 'p', 'p', 'l', 'e']
 
+x = pi
+@test repr(x; context=nothing) == sprint(show, x; context=nothing) == "π"
+
+s = IOBuffer()
+context = :compact => true
+ctx = IOContext(s, context)
+show(ctx, pi)
+@test String(take!(s)) == "π"
+
 end # module test_julia_strings
