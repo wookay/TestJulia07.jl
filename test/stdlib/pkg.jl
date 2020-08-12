@@ -10,6 +10,9 @@ pkg = Base.identify_package(Pkg, "Pkg")
 
 if VERSION >= v"1.4"
     deps = Pkg.dependencies()
+    for dep in deps
+        @info :dep dep
+    end
     uuid = Base.UUID("ba5e3d4b-8524-549f-bc71-e76ad9e9deed") # Jive
     @test deps[uuid].version isa VersionNumber
 end
