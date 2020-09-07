@@ -18,7 +18,7 @@ using Test
 TV, NV = TypeVar(:T), TypeVar(:N)
 @test string(Array{TV,NV}) == "Array{T,N}"
 
-@test (T where T) === Any
+@test Any === (T where T) === (Int where Int) === (where where where)
 @test (+)::typeof(+) === +
 
 end # module test_julia_types

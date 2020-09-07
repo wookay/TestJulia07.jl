@@ -66,3 +66,16 @@ A = Matrix(reshape(1:16, (4,4)))
 @test CartesianIndices(A)[2,2] == CartesianIndices(A)[CartesianIndex(2,2)] == CartesianIndex(2,2)
 
 end #  module test_julia_array_indices
+
+
+module test_julia_array_math
+
+using Test
+
+A = [1 2;
+     3 4]
+
+@test reverse(A, dims=1) == [3 4; 1 2]
+@test reverse(A, dims=2) == [2 1; 4 3]
+
+end # module test_julia_array_math
