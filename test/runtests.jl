@@ -6,5 +6,8 @@ if haskey(ENV, "TRAVIS")
         append!(skips, ["pkgs/flux"])
     end
 end
+if VERSION >= v"1.6.0-DEV.947"
+    append!(skips, ["pkgs/forwarddiff/api.jl"])
+end
 runtests(@__DIR__, skip=skips, node1=["stdlib/sharedarrays", "stdlib/distributed"])
 !isempty(Jive.Skipped.expressions) && printstyled("skipped tests: ", join(Jive.Skipped.expressions, ", "), "\n", color=:yellow)
