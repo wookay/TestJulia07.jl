@@ -1,5 +1,5 @@
 using Jive
-skips = ["revise.jl", "pkgs/revise", "pkgs/cstparser", "pkgs/flows", "pkgs/metalhead", "pkgs/cassette", "pkgs/temporal"]
+skips = ["revise.jl", "pkgs/revise", "pkgs/cstparser", "pkgs/flows", "pkgs/metalhead", "pkgs/cassette", "pkgs/temporal", "pkgs/umap"]
 if haskey(ENV, "TRAVIS")
     push!(skips, "julia/inbounds")
     if VERSION >= v"1.3"

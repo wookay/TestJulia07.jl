@@ -55,7 +55,6 @@ ReverseDiff = "37e2e3b7-166d-5795-8a7a-e32c996b4267"
 Temporal = "a110ec8f-48c8-5d59-8f7e-f91bc4cc0c3d"
 TimeSeries = "9e3dc215-6440-5c97-bce1-76c03772f85e"
 Tracker = "9f7883ad-71c0-57eb-9f7f-b5c9e6d3789c"
-UMAP = "c4f8c510-2410-5be4-91d7-4fbaeb39457e"
 URIParser = "30578b45-9adc-5946-b283-645ec420af67"
 Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 WAV = "8149f6b0-98f6-5db9-b78f-408fbbb8ef88"
@@ -66,7 +65,7 @@ PDMats = "90014a1f-27ba-587c-ab20-58faa44d9150"
 
 [targets]
 test = ["Dates", "Distributed", "InteractiveUtils", "LinearAlgebra", "Libdl", "Printf", "Profile", "Random", "SparseArrays", "SharedArrays", "Statistics", "Test", "UUIDs",
-        "BSON", "BenchmarkTools", "Bukdu", "CSTParser", "CSV", "Cassette", "DataFrames", "DataLogger", "DataStructures", "DelimitedFiles", "DiffResults", "DiffRules", "Distributions", "DualNumbers", "FileIO", "FillArrays", "Flux", "ForwardDiff", "IntervalArithmetic", "IntervalSets", "IterTools", "JSON", "JSON2", "Jive", "Lazy", "MLStyle", "Morton", "MusicManipulations", "Observables", "ProgressMeter", "ReverseDiff", "Temporal", "TimeSeries", "Tracker", "UMAP", "URIParser", "Unitful", "WAV", "SplitApplyCombine", "Primes", "Colors",  "PDMats"]
+        "BSON", "BenchmarkTools", "Bukdu", "CSTParser", "CSV", "Cassette", "DataFrames", "DataLogger", "DataStructures", "DelimitedFiles", "DiffResults", "DiffRules", "Distributions", "DualNumbers", "FileIO", "FillArrays", "Flux", "ForwardDiff", "IntervalArithmetic", "IntervalSets", "IterTools", "JSON", "JSON2", "Jive", "Lazy", "MLStyle", "Morton", "MusicManipulations", "Observables", "ProgressMeter", "ReverseDiff", "Temporal", "TimeSeries", "Tracker", "URIParser", "Unitful", "WAV", "SplitApplyCombine", "Primes", "Colors",  "PDMats"]
 
 [compat]
 PDMats = "0.10"
