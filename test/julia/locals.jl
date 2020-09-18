@@ -12,6 +12,8 @@ output = DataLogger.read_stdout() do
     end
 end
 
-@test output == "Dict{Symbol,Any}(:x => 1)"
+if VERSION >= v"1.6.0-DEV.849"
+    @test output == "Dict{Symbol, Any}(:x => 1)"
+end
 
 end # @If VERSION >= v"1.2.0-DEV.350" module test_julia_locals
