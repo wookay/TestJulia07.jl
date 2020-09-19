@@ -16,7 +16,9 @@ using Test
 
 # https://docs.julialang.org/en/v1/devdocs/types/
 TV, NV = TypeVar(:T), TypeVar(:N)
-@test string(Array{TV,NV}) == "Array{T,N}"
+if VERSION >= v"1.6.0-DEV.849"
+    @test string(Array{TV,NV}) == "Array{T, N}"
+end
 
 @test Any === (T where T) === (Int where Int) === (where where where)
 @test (+)::typeof(+) === +
