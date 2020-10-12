@@ -11,6 +11,7 @@ using Test
 @test typeof(UnionAll) === DataType
 @test typeof(Union) === DataType
 @test typeof(Union{}) === Core.TypeofBottom
+@test typeof(==) === typeof(==)
 @test Union{Int,Int} === Union{Int} === Int
 @test typeintersect(Int, Bool) === Union{} === Base.Bottom
 
