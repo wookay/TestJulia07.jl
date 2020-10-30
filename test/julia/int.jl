@@ -28,6 +28,19 @@ using Test
 @test leading_zeros(UInt8(0b00000001)) == 7
 @test leading_zeros(UInt8(0b01111111)) == 1
 
+@test widen(Int64) === Int128
+@test 1 isa Int64
+@test typeof(widen(1)) === Int128
+@test signed(UInt64) === Int64
+@test unsigned(Int64) === UInt64
+@test signbit(1) === false
+@test signbit(-1)
+
+bits(::Int64) = 64
+bits(::Int32) = 32
+@test bits(1) == 64
+@test bits(Int32(1)) == 32
+
 end # module test_julia_int
 
 
