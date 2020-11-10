@@ -24,10 +24,14 @@ buf = IOBuffer()
 
 println(buf, "\r\nabc--")
 seekstart(buf)
+@test position(buf) == 0
 
 skipchars(==(Char(UInt8('\r'))), buf)
 skipchars(==('\n'), buf)
 
 @test "abc" == String(readuntil(buf, "--"))
+
+seekend(buf)
+@test eof(buf)
 
 end # module test_julia_io_skipchars
