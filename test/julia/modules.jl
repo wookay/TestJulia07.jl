@@ -125,3 +125,16 @@ end
 @test (+) !== (M.:+)
 
 end # module test_julia_plus
+
+
+module test_julia_baremodule
+
+baremodule B
+end
+
+using Test
+
+@test !isdefined(B, :Base)
+@test isdefined(B, :Core)
+
+end # module test_julia_baremodule
