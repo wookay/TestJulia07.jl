@@ -6,6 +6,7 @@ using Test
                              getindex([10], i)
                          end
 
+if Base.JLOptions().check_bounds != 1  # --check-bounds=yes
 vals = []
 @inbounds for i in [0, 1, 2]
               c = getindex([10], i)
@@ -19,5 +20,6 @@ for i in [0, 1, 2]
     push!(vals, c)
 end
 @test ==(10).(vals) == [false, true, false]
+end # if Base.JLOptions().check_bounds != 1
 
 end # module test_julia_inbounds
