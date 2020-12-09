@@ -12,7 +12,7 @@ end
 
 r[] = 2
 @test history == [(on, r, 2)]
-@test r.listeners == [f]
+@test r.listeners == [f.f]
 
 off(r, f)
 
