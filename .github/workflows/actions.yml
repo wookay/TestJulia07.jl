@@ -25,4 +25,5 @@ jobs:
           version: ${{ matrix.julia-version }}
       - name: runtests
         run: |
+             julia --project=. -e 'using Pkg; pkg"dev https://github.com/wookay/DataLogger.jl.git"'
              julia --project=. -e 'using Pkg; Pkg.test()'
