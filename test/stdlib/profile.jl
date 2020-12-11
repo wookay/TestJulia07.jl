@@ -1,11 +1,10 @@
 module test_stdlib_profile
 
 using Profile
-using Bukdu
-# using StatProfilerHTML
 
-@profile get("/") do conn::Conn
-end
+f() = 0
+
+@profile f()
 
 # statprofilehtml()
 
