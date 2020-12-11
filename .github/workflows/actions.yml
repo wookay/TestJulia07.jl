@@ -25,7 +25,4 @@ jobs:
           version: ${{ matrix.julia-version }}
       - name: runtests
         run: |
-             julia -e 'using Pkg; pkg"registry add https://github.com/JuliaRegistries/General.git"'
-             julia --project=. -e 'using Pkg; pkg"registry add https://github.com/wookay/Registro.git"'
-             julia --project=. -e 'using Pkg; pkg"up"'
              julia --project=. -e 'using Pkg; Pkg.test()'
