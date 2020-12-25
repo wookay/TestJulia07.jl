@@ -1,9 +1,24 @@
+module test_julia_macro_invocation
+
+using Test
+
+macro m()
+    (__module__, __source__)
+end
+
+(m, node) = @m
+@test m === Main.test_julia_macro_invocation
+@test node === LineNumberNode(9, Symbol(@__FILE__))
+
+end # module test_julia_macro_invocation
+
+
 module test_julia_macro_emoji
 
 using Test
 
 macro 🤔(f)
-    println(f)
+    # println(f)
     f
 end
 
