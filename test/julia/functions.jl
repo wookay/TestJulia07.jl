@@ -30,6 +30,11 @@ end
 str(a; b="$a") = b
 @test str(42) == "42"
 
+@test str(42; b=3) == 3
+
+b = 3
+@test str(42; b) == 3
+
 h(; kwargs...) = kwargs
 @test h(a=1, b="").data.a == 1
 
