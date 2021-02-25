@@ -119,6 +119,8 @@ f(x::Union{Int,String}, y::Union{Int,String}) = :union
 
 @test ((+)::typeof(+))(1, 2) == 3
 
+@test Base.uniontypes(Union{Int, String}) == [Int, String]
+
 end # module test_julia_types_union
 
 
