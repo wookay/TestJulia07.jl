@@ -37,6 +37,13 @@ using InteractiveUtils # subtypes
 @test supertype(DataType) === Type.body
 @test subtypes(DataType) == []
 
+@test Type <: Type
+@test Type{Int} <: Type
+@test Type{<:Integer} <: Type
+@test Type{Int} <: Type{<:Integer}
+@test Type{Signed} <: Type{<:Integer}
+@test !(Int <: Type{<:Integer})
+
 @test supertype(Type) === Any
 @test subtypes(Type) == [Core.TypeofBottom, DataType, Union, UnionAll]
 
