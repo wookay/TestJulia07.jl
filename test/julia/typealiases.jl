@@ -25,4 +25,10 @@ else
     @test sprint(show, GVec([G()])) == "GVec([G()])"
 end
 
+
+const A = Vector{Int64}
+if VERSION >= v"1.6"
+    @test sprint(io -> show(io, MIME"text/plain"(), A)) == "Vector{Int64} (alias for Array{Int64, 1})"
+end
+
 end # module test_julia_typealiases

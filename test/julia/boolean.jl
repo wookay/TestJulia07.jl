@@ -7,4 +7,7 @@ using Test
 @test 2false == 0
 @test false - true == -1
 
-end # module test_julia_booleankk
+@test true == 1
+@test false == 0
+
+end # module test_julia_boolean
