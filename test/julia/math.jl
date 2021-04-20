@@ -17,7 +17,9 @@ using Test
 @test sqrt(8) == hypot(2, 2)
 @test 3.0 == hypot(2, 1, 2)
 
-end # Base.Math.FMA_NATIVE
+@test ℯ^(im)π ≈ -1
+
+end # module test_julia_math
 
 
 module test_julia_math_hypot
