@@ -17,3 +17,13 @@ using Test
 @test conj(im) == (transpose ∘ conj)(im) == adjoint(im)
 
 end # module test_julia_number_adjoint
+
+
+module test_julia_number_isless
+
+using Test
+
+@test isless(-0.0, 0.0)
+@test !(-0.0 < 0.0)
+
+end # module test_julia_number_isless
