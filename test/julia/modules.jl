@@ -137,4 +137,13 @@ using Test
 @test !isdefined(B, :Base)
 @test isdefined(B, :Core)
 
+
+baremodule A
++(x, y) = (x, y)
+end
+
+using .A: +
+
+@test 1 + 2 == (1, 2)
+
 end # module test_julia_baremodule
