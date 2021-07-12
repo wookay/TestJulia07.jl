@@ -2,6 +2,8 @@ module test_julia_boolean
 
 using Test
 
+@test true isa Bool
+@test true isa Integer
 @test true isa Number
 @test 2true + true == 3
 @test 2false == 0
