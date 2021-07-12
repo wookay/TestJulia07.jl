@@ -10,5 +10,12 @@ a,b = 1,2
 
 @test Symbol("F") === :F
 @test Symbol(".") === :.
+@test Symbol(":") === :(:)
+@test Symbol("::") === :(::)
+
+@test :(:)   isa Symbol
+@test :(::)  isa Symbol
+@test :(:::) isa Expr
+@test :(:::) == Expr(:(::), :(:))
 
 end # module test_julia_symbols
