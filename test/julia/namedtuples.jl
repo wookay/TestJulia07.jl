@@ -29,4 +29,6 @@ f(; kwargs...) = kwargs
 name = "a"
 @test NamedTuple{(Symbol(name),)}(2) == (a=2,)
 
+@test (;:).:(:) === (:)
+
 end # module test_julia_namedtuples
