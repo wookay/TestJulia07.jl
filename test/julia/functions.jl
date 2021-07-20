@@ -36,7 +36,7 @@ b = 3
 @test str(42; b) == 3
 
 h(; kwargs...) = kwargs
-@test h(a=1, b="").data.a == 1
+@test (; h(a=1, b="")...).a == 1
 
 end # module test_julia_functions
 
