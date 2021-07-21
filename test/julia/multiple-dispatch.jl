@@ -21,7 +21,7 @@ end # module test_julia_multiple_dispatch
 module test_julia_multiple_dispatch_dc
 
 using Test
-using DataLogger
+using IOCapture
 
 # http://gall.dcinside.com/mgallery/board/view/?id=github&no=1628
 
@@ -54,7 +54,7 @@ function train(나::사람)
     println(나.name, "(", 나.age, ")는 ", nameof(typeof(나)), "으로서 훈련을 합니다.")
 end
 
-output = DataLogger.read_stdout() do
+(value, output) = IOCapture.capture() do
     name, age = "다메즈마", 27
     buy_goods(손님(name, age))
     study(학생(name, age))

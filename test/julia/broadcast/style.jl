@@ -37,8 +37,8 @@ function Base.setindex!(x::G{T,N}, val, inds::Vararg{Int,N}) where {T,N}
 end
 
 
-using DataLogger
-output = DataLogger.read_stdout() do
+using IOCapture
+(value, output) = IOCapture.capture() do
 
 g  = G{Int,1}([5,6], "")
 g2 = Float32.(g)
@@ -61,63 +61,84 @@ end
 
 using Test
 @test output == """
-Main.test_julia_broadcast_style style.jl#14  BroadcastStyle
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#24  similar    (T, N, ElType) = (Int64, 1, Float32)
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#35  setindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#35  setindex
-Main.test_julia_broadcast_style style.jl#45  g2    g2 isa G{Float32, 1} = true
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#14  BroadcastStyle
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#24  similar    (T, N, ElType) = (Float32, 1, Float32)
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#35  setindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#35  setindex
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#19  size
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#30  getindex
-Main.test_julia_broadcast_style style.jl#49  g3    Float32[5.0, 6.0] .+ 1 = Float32[6.0, 7.0]
-Main.test_julia_broadcast_style style.jl#52  broadcasted
-Main.test_julia_broadcast_style style.jl#56  g5    Float32[5.0, 6.0] .+ 1 = nothing
+[ Info: BroadcastStyle
+[ Info: size
+┌ Info: similar
+└   (T, N, ElType) = (Int64, 1, Float32)
+[ Info: size
+[ Info: size
+[ Info: getindex
+[ Info: setindex
+[ Info: getindex
+[ Info: setindex
+┌ Info: g2
+└   g2 isa G{Float32, 1} = true
+[ Info: size
+[ Info: size
+[ Info: size
+[ Info: getindex
+[ Info: getindex
+[ Info: getindex
+[ Info: getindex
+[ Info: size
+[ Info: size
+[ Info: size
+[ Info: getindex
+[ Info: getindex
+[ Info: getindex
+[ Info: getindex
+[ Info: size
+[ Info: size
+[ Info: size
+[ Info: getindex
+[ Info: getindex
+[ Info: getindex
+[ Info: getindex
+[ Info: size
+[ Info: size
+[ Info: size
+[ Info: getindex
+[ Info: getindex
+[ Info: getindex
+[ Info: getindex
+[ Info: BroadcastStyle
+[ Info: size
+┌ Info: similar
+└   (T, N, ElType) = (Float32, 1, Float32)
+[ Info: size
+[ Info: size
+[ Info: getindex
+[ Info: setindex
+[ Info: getindex
+[ Info: setindex
+[ Info: size
+[ Info: size
+[ Info: size
+[ Info: size
+[ Info: size
+[ Info: getindex
+[ Info: size
+[ Info: getindex
+[ Info: size
+[ Info: getindex
+[ Info: size
+[ Info: getindex
+[ Info: size
+[ Info: getindex
+[ Info: size
+[ Info: getindex
+[ Info: size
+[ Info: getindex
+[ Info: size
+[ Info: getindex
+┌ Info: g3
+│   Float32[5.0, 6.0] .+ 1 =
+│    2-element Main.test_julia_broadcast_style.G{Float32, 1}:
+│     6.0
+└     7.0
+[ Info: broadcasted
+┌ Info: g5
+└   Float32[5.0, 6.0] .+ 1 = :nothing
 """
 
 end # module test_julia_broadcast_style
