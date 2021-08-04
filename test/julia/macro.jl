@@ -34,3 +34,17 @@ f = @🤔 🍞 ∘ 🚗
 @test f('🌀') == ('🌀', '🌀')
 
 end # module test_julia_macro_emoji
+
+
+module test_julia_macro_var_str
+
+using Test
+
+struct A
+    var"local"
+end
+
+a = A(1)
+@test a.local == a.var"local" == getproperty(a, :local)
+
+end # module test_julia_macro_var_str
