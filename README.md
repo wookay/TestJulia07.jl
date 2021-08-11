@@ -5,17 +5,8 @@
 |  [![][actions-img]][actions-url] |
 
 
-
-* Requirements
-   - [Julia](https://julialang.org/downloads/)
-
-`julia>` type `]` key
-
-```julia
-(v1.0) pkg> registry add https://github.com/wookay/Registro.git
-(v1.0) pkg> precompile
-(v1.0) pkg> test TestJulia07
-```
+ * https://github.com/wookay/TestJulia07.jl  Practice Julia - stable things
+ * https://github.com/wookay/TestJulia11.jl  Practice Julia II - dev things
 
 
 [actions-img]: https://github.com/wookay/TestJulia07.jl/workflows/CI/badge.svg
