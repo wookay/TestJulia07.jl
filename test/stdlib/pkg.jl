@@ -8,10 +8,8 @@ pkg = Base.identify_package(Pkg, "Pkg")
 
 if VERSION >= v"1.4"
     deps = Pkg.dependencies()
-    for d in deps
-        @info d
-    end
-    #  @test deps[uuid].version isa VersionNumber
+    @test !isempty(deps)
+    # @test deps[uuid].version isa VersionNumber
 end
 
 end # module test_stdlib_pkg
