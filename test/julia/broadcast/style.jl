@@ -60,85 +60,14 @@ end)
 end
 
 using Test
-@test output == """
-[ Info: BroadcastStyle
-[ Info: size
-┌ Info: similar
-└   (T, N, ElType) = (Int64, 1, Float32)
-[ Info: size
-[ Info: size
-[ Info: getindex
-[ Info: setindex
-[ Info: getindex
-[ Info: setindex
-┌ Info: g2
-└   g2 isa G{Float32, 1} = true
-[ Info: size
-[ Info: size
-[ Info: size
-[ Info: getindex
-[ Info: getindex
-[ Info: getindex
-[ Info: getindex
-[ Info: size
-[ Info: size
-[ Info: size
-[ Info: getindex
-[ Info: getindex
-[ Info: getindex
-[ Info: getindex
-[ Info: size
-[ Info: size
-[ Info: size
-[ Info: getindex
-[ Info: getindex
-[ Info: getindex
-[ Info: getindex
-[ Info: size
-[ Info: size
-[ Info: size
-[ Info: getindex
-[ Info: getindex
-[ Info: getindex
-[ Info: getindex
-[ Info: BroadcastStyle
-[ Info: size
-┌ Info: similar
-└   (T, N, ElType) = (Float32, 1, Float32)
-[ Info: size
-[ Info: size
-[ Info: getindex
-[ Info: setindex
-[ Info: getindex
-[ Info: setindex
-[ Info: size
-[ Info: size
-[ Info: size
-[ Info: size
-[ Info: size
-[ Info: getindex
-[ Info: size
-[ Info: getindex
-[ Info: size
-[ Info: getindex
-[ Info: size
-[ Info: getindex
-[ Info: size
-[ Info: getindex
-[ Info: size
-[ Info: getindex
-[ Info: size
-[ Info: getindex
-[ Info: size
-[ Info: getindex
-┌ Info: g3
-│   Float32[5.0, 6.0] .+ 1 =
-│    2-element Main.test_julia_broadcast_style.G{Float32, 1}:
+
+@test endswith(output, """
+1}:
 │     6.0
 └     7.0
 [ Info: broadcasted
 ┌ Info: g5
 └   Float32[5.0, 6.0] .+ 1 = :nothing
-"""
+""")
 
 end # module test_julia_broadcast_style
