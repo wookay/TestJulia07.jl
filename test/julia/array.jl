@@ -79,3 +79,13 @@ A = [1 2;
 @test reverse(A, dims=2) == [2 1; 4 3]
 
 end # module test_julia_array_math
+
+
+module test_julia_array_only_first
+
+using Test
+
+@test_throws ArgumentError only([])
+@test_throws BoundsError   first([])
+
+end # module test_julia_array_only_first
