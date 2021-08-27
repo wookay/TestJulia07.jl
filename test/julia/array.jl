@@ -86,6 +86,9 @@ module test_julia_array_only_first
 using Test
 
 @test_throws ArgumentError only([])
+@test 1 == only([1])
+@test_throws ArgumentError only([1, 2])
+
 @test_throws BoundsError   first([])
 
 end # module test_julia_array_only_first
