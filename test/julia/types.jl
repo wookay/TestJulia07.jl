@@ -177,3 +177,13 @@ end
 @test B(push!).f === push!
 
 end # module test_julia_types_struct
+
+
+module test_julia_types_isstructtype
+
+using Test
+
+@test !isstructtype(Int)
+@test isstructtype(Vector)
+
+end # module test_julia_types_isstructtype
