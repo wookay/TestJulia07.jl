@@ -187,3 +187,20 @@ using Test
 @test isstructtype(Vector)
 
 end # module test_julia_types_isstructtype
+
+
+module test_julia_types_subtyping
+
+using Test
+
+abstract type AbstractT end
+
+const AT = AbstractT
+
+struct ConcretT <: AT
+end
+
+@test supertype(ConcretT) === AbstractT
+@test supertype(typeof(ConcretT())) === AbstractT
+
+end # module test_julia_types_subtyping
