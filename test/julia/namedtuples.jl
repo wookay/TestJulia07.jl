@@ -31,6 +31,10 @@ name = "a"
 
 @test NamedTuple{(), Tuple{}}((;)) == (;)
 
-@test (;:).:(:) === (:)
+@test (;:).:(:)     === (:)
+@test (;*).:*       === *
+@test (;<:).:<:     === <:
+@test (;<:, >:).:>: === >:
+@test (;===).:(===) === ===
 
 end # module test_julia_namedtuples
