@@ -2,6 +2,9 @@ module test_julia_tuples_ntuple
 
 using Test
 
+@test tuple() == ()
+@test tuple(1,) == (1,)
+
 @test tuple(1:3...) == ntuple(identity, 3) == (1, 2, 3)
 @test tuple([1, 2, 3]) == ([1, 2, 3],)
 

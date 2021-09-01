@@ -2,6 +2,8 @@ module test_julia_namedtuples
 
 using Test
 
+@test NamedTuple() == (;)
+
 @test (a=1, b=2) == (a=1, :b=>2)
 @test (b=2,) == (; b=2) == (; :b=>2)
 
