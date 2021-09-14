@@ -56,3 +56,13 @@ f(n::Int) = (:int, n)
 @test f(true) == (:integer, true)
 
 end # module test_julia_integer
+
+
+module test_julia_bswap
+
+using Test
+
+@test bswap(0x3039) == 0x3930
+@test (bswap ∘ bswap)(0x3039) == 0x3039
+
+end # module test_julia_bswap
