@@ -55,7 +55,9 @@ if VERSION >= v"1.3"
     @test String(take!(s)) == "π"
 end
 
+@test string(12345, base = 16) == "3039"
 @test hex2bytes(string(12345, base = 16)) == [0x30, 0x39]
-@test 12345 == 0x3039 == Int(0x3039) == Int(0x3000 + 0x0039) == UInt16(0x30) << 8 + 0x39
+@test 12345 == 0x3039 == Int(0x3039) == (0x3000 + 0x0039) == (UInt16(0x30) << 8 + 0x39)
+@test bytes2hex([0x30, 0x39]) == "3039"
 
 end # module test_julia_strings
