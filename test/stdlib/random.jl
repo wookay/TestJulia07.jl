@@ -6,8 +6,10 @@ using Random: Random, Sampler, MersenneTwister
 const rand_nums = let
     if VERSION >= v"1.8.0-DEV.575"
         [5, 1]
-    else
+    elseif VERSION >= v"1.6"
         [5, 8]
+    else
+        [8, 2]
     end
 end
 
