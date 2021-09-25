@@ -8,12 +8,19 @@ using Test
 @test typeof(Type{String}) === DataType
 @test typeof(Type{<:AbstractString}) === UnionAll
 @test typeof(String) === DataType
+
 @test typeof(UnionAll) === DataType
+
 @test typeof(Union) === DataType
 @test typeof(Union{}) === Core.TypeofBottom
+@test Union{} === Base.Bottom
+@test Base.Bottom isa Core.TypeofBottom
 @test typeof(==) === typeof(==)
 @test Union{Int,Int} === Union{Int} === Int
-@test typeintersect(Int, Bool) === Union{} === Base.Bottom
+@test typeintersect(Int, Bool) === Union{}
+
+@test typeof(Vector{}) === typeof(Vector) === UnionAll
+@test Float64 isa Type{Float64}
 
 # https://docs.julialang.org/en/v1/devdocs/types/
 TV, NV = TypeVar(:T), TypeVar(:N)
