@@ -64,7 +64,7 @@ end
 @test g() isa Float32
 @test h() isa Int
 
-end # function test_julia_functions_return
+end # module test_julia_functions_return
 
 
 module test_julia_functions_inner
@@ -91,4 +91,20 @@ using Test
 @test (() -> 1)()   == 1
 @test ((x) -> x)(1) == 1
 
-end # test_julia_functions_anonymous
+end # module test_julia_functions_anonymous
+
+
+module test_julia_functions_propertynames
+
+using Test
+
+function builder()
+    n = 1
+    f() = n + 1
+end
+
+g = builder()
+@test propertynames(g) == (:n,)
+@test g.n == 1
+
+end # module test_julia_functions_propertynames
