@@ -7,7 +7,7 @@ macro m()
 end
 
 (m, node) = @m
-@test m === Main.test_julia_macro_invocation
+@test m === test_julia_macro_invocation
 @test node === LineNumberNode(9, Symbol(@__FILE__))
 
 end # module test_julia_macro_invocation

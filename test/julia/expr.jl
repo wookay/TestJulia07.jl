@@ -17,7 +17,7 @@ macro a()
 end
 
 (m, s) = @a()
-@test m === Main.test_julia_expr_hygiene
+@test m === test_julia_expr_hygiene
 @test s.line == 19
 
 # Hygienic macros are macros whose expansion is guaranteed not to cause the accidental capture of identifiers.
