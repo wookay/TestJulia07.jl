@@ -22,9 +22,11 @@ s = first(split("a,b", ","))
  '1'  '2'  '3'  '1'  '2'  '3']
 
 @test occursin("and", "candy")
-@test occursin("candy")("and")
 @test contains("candy", "and")
+if VERSION >= v"1.6"
+@test occursin("candy")("and")
 @test contains("and")("candy")
+end
 
 buf = Base.SecretBuffer("hello")
 @test read(buf, String) == "hello"
