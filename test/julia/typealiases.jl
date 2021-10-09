@@ -8,9 +8,9 @@ end
 const GVec = Vector{G}
 
 if VERSION >= v"1.4"
-    @test sprint(show, GVec([G()])) == "[Main.test_julia_typealiases.G()]"
+    @test endswith(sprint(show, GVec([G()])), ".test_julia_typealiases.G()]")
 elseif VERSION >= v"1.3"
-    @test sprint(show, GVec([G()])) == "Main.test_julia_typealiases.G[Main.test_julia_typealiases.G()]"
+    @test endswith(sprint(show, GVec([G()])), ".test_julia_typealiases.G[Main.test_julia_typealiases.G()]")
 end
 
 function Base.show(io::IO, v::GVec)
@@ -20,7 +20,7 @@ function Base.show(io::IO, v::GVec)
 end
 
 if VERSION >= v"1.2"
-    @test sprint(show, GVec([G()])) == "GVec([Main.test_julia_typealiases.G()])"
+    @test endswith(sprint(show, GVec([G()])), ".test_julia_typealiases.G()])")
 else
     @test sprint(show, GVec([G()])) == "GVec([G()])"
 end

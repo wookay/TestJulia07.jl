@@ -21,7 +21,10 @@ s = first(split("a,b", ","))
 ['1'  '2'  '3'  '1'  '2'  '3'
  '1'  '2'  '3'  '1'  '2'  '3']
 
-@test occursin("app", "apple")
+@test occursin("and", "candy")
+@test occursin("candy")("and")
+@test contains("candy", "and")
+@test contains("and")("candy")
 
 buf = Base.SecretBuffer("hello")
 @test read(buf, String) == "hello"
