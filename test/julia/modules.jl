@@ -10,8 +10,8 @@ end
 @test [:B, :c, :d] == names(B)
 @test test_julia_modules1 === parentmodule(B)
 @test B === parentmodule(B.f)
-@test (:Main, :test_julia_modules1, :B) == fullname(B)
-@test :B == nameof(B)
+@test (:test_julia_modules1, :B) == fullname(B)[end-1:end]
+@test :B === nameof(B)
 @test Base.isexported(B, :c)
 
 @test Core === parentmodule(Int)
@@ -92,7 +92,7 @@ macro m()
     __module__
 end
 
-@test (@__MODULE__) == (@m) == test_julia_modules_macro
+@test (@__MODULE__) === (@m) === test_julia_modules_macro
 
 end # module test_julia_modules_macro
 
