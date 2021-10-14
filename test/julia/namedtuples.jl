@@ -39,3 +39,13 @@ name = "a"
 @test (;~,!,%,^,&,*,-,+,==,|,\,:,<,>,/) == (~ = ~, ! = !, % = rem, ^ = ^, (&) = &, * = *, - = -, + = +, == = ==, | = |, \ = \, (:) = Colon(), < = <, > = >, / = /)
 
 end # module test_julia_namedtuples
+
+
+module test_julia_namedtuples_structdiff
+
+using Test
+
+@test Base.structdiff((a=1, b=2), NamedTuple{(:a,)}) == (b=2,)
+@test Base.structdiff((a=1, b=2), (a=1,))            == (b=2,)
+
+end # module test_julia_namedtuples_structdiff
