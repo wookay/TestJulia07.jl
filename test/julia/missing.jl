@@ -25,4 +25,10 @@ using Test
 @test ismissing(missing in collect(keys(Dict(missing => 1))))
 @test ismissing(missing in collect(values(Dict(1 => missing))))
 
+@test isless(1, missing)
+@test (1 < missing) === missing
+
+@test isless(1, 2)
+@test 1 < 2
+
 end # module test_julia_missing
