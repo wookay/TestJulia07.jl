@@ -23,3 +23,17 @@ using Core.Compiler: ⊑
 @test Int ⊑ Integer
 
 end # module test_julia_core_compiler
+
+
+module test_julia_core_singletontype
+
+using Test
+
+struct S
+end
+
+@test Base.issingletontype(S)
+@test S.instance === S()
+@test S.instance isa S
+
+end # module test_julia_core_singletontype
