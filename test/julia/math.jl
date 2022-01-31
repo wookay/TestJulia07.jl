@@ -2,7 +2,9 @@ module test_julia_math
 
 using Test
 
+if VERSION < v"1.8.0-DEV.1087"
 @test Base.Math.FMA_NATIVE isa Bool
+end
 
 @test 0.99999999 ≈ 1
 
