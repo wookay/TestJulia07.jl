@@ -48,7 +48,7 @@ f(op::Union{typeof.((+, -, *, /))...}) = 1
 end # module test_julia_op2
 
 
-module test_julia_plus
+module test_julia_op_plus
 
 using Test
 
@@ -70,4 +70,14 @@ end
 @test A.:+ != B.:+
 @test C.:+ != C.D.:+
 
-end # module test_julia_plus
+end # module test_julia_op_plus
+
+
+module test_julia_op_pipe_gt # |>
+
+using Test
+
+@test |>(3, -) == -3
+@test (3 |> -) == -3
+
+end # module test_julia_op_pipe_gt # |>
