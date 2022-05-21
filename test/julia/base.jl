@@ -8,8 +8,11 @@ using .M
 @test basename(Base.active_project()) == "Project.toml"
 
 pkgid = Base.identify_package("Pkg")
+if pkgid === nothing
+else
 @test pkgid.uuid isa Base.UUID
 @test pkgid.name == "Pkg"
 @test basename(Base.locate_package(pkgid)) == "Pkg.jl"
+end
 
 end # module test_julia_base
