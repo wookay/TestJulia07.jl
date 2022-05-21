@@ -8,6 +8,7 @@ using .M
 @test basename(Base.active_project()) == "Project.toml"
 
 pkgid = Base.identify_package("Pkg")
+@info :pkgid pkgid
 if pkgid === nothing
 else
 @test pkgid.uuid isa Base.UUID
