@@ -31,6 +31,11 @@ end
 @test Any === (T where T) === (Int where Int) === (where where where)
 @test (+)::typeof(+) === +
 
+@test nothing isa Nothing
+@test nothing isa Any
+@test Any isa Type
+@test Any isa Any
+
 end # module test_julia_types
 
 
