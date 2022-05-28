@@ -66,3 +66,16 @@ end
 @test bytes2hex([0x30, 0x39]) == "3039"
 
 end # module test_julia_strings
+
+
+module test_julia_strings_search
+
+using Test
+using REPL
+
+# julia VERSION >= v"1.6"
+# AbstractPattern
+
+@test Regex in REPL.subtypes(AbstractPattern)
+
+end # module test_julia_strings_search
