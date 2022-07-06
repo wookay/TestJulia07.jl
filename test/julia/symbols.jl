@@ -18,4 +18,6 @@ a,b = 1,2
 @test :(:::) isa Expr
 @test :(:::) == Expr(:(::), :(:))
 
+@test :var"a" === :a
+
 end # module test_julia_symbols
