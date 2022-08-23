@@ -26,3 +26,12 @@ g(; b, c, a) = a + b + c
 @test hasmethod(g, Tuple{}, (:a, :b, :c))
 
 end # @If v"1.2.0-DEV.218" >= VERSION module test_reflection_hasmethod
+
+
+module test_reflection_return_types
+
+using Test
+
+@test only(Base.return_types(==, Tuple{Int, Int})) === Bool
+
+end # module test_reflection_return_types
