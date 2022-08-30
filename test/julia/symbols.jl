@@ -20,4 +20,8 @@ a,b = 1,2
 
 @test :var"a" === :a
 
+@test !isa(:1, Symbol)
+@test :1 == 1
+@test Symbol(1) === Symbol("1")
+
 end # module test_julia_symbols
