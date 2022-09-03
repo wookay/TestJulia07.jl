@@ -108,3 +108,20 @@ g = builder()
 @test g.n == 1
 
 end # module test_julia_functions_propertynames
+
+
+module test_julia_functions_ambiguous
+
+using Test
+
+f(::Int, b) = 1
+f(a, ::Int) = 2
+
+# ERROR: MethodError: f(::Int64, ::Int64) is ambiguous. Candidates:
+#   f(::Int64, b) in Main at REPL[1]:1
+#   f(a, ::Int64) in Main at REPL[2]:1
+# Possible fix, define
+#   f(::Int64, ::Int64)
+@test_throws MethodError f(0, 0)
+
+end # module test_julia_functions_ambiguous
