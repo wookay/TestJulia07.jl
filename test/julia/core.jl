@@ -37,3 +37,12 @@ end
 @test S.instance isa S
 
 end # module test_julia_core_singletontype
+
+
+module test_julia_core_typename
+
+using Test
+
+@test NamedTuple.body.body.name isa Core.TypeName
+
+end # module test_julia_core_typename
