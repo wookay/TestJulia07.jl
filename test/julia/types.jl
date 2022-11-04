@@ -116,9 +116,10 @@ using Test
 @test NTuple{2,Int} <: Tuple{T,T} where T
 @test !(Tuple{Int,String} <: Tuple{T,T} where T)
 
-@test (Tuple{T} where T) <: Tuple{Vararg{T} where T}
+# Wrapping `Vararg` directly in UnionAll is deprecated (wrap the tuple instead).
+# @test (Tuple{T} where T) <: Tuple{Vararg{T} where T}
 @test (Tuple{T,T} where T) <: Tuple{Vararg{T}} where T
-@test Tuple{Int,String} <: Tuple{Vararg{T} where T}
+# @test Tuple{Int,String} <: Tuple{Vararg{T} where T}
 
 f(x::T, y::T) where {T} = 0
 @test methods(f, Tuple{T,T} where T).mt.name === :f
