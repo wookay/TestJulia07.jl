@@ -24,4 +24,7 @@ a,b = 1,2
 @test :1 == 1
 @test Symbol(1) === Symbol("1")
 
+@test !(:false isa Symbol)
+@test false === :false
+
 end # module test_julia_symbols
