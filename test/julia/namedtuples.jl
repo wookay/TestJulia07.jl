@@ -16,6 +16,10 @@ d = Dict(:a=>1, :b=>2)
 @test (; d...) == (a=1, b=2)
 @test d == Dict(pairs((a=1, b=2)))
 
+e = (; b, a) = (a=1, b=2)
+@test e == (a=1, b=2)
+@test a == 1 && b == 2
+
 nt = (a = 1, b = 2)
 @test NamedTuple{keys(nt)}(values(nt)) == nt
 
