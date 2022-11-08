@@ -27,4 +27,13 @@ a,b = 1,2
 @test !(:false isa Symbol)
 @test false === :false
 
+@test Symbol(true) === Symbol("true") !== :true
+@test Symbol(false) === Symbol("false") !== :false
+
+@test Bool(1) === :true === true
+@test Bool(0) === :false === false
+
+@test :nothing isa Symbol
+@test Symbol(nothing) === Symbol("nothing") === :nothing
+
 end # module test_julia_symbols
