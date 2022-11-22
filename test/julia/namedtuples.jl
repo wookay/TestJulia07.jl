@@ -2,7 +2,10 @@ module test_julia_namedtuples
 
 using Test
 
-@test NamedTuple() == (;)
+@test NamedTuple{(), Tuple{}}((;)) == NamedTuple{}() == NamedTuple() == (;)
+@test_throws MethodError NamedTuple{(), Tuple{}}()
+@test (;) isa NamedTuple
+@test (;) isa NamedTuple{(), Tuple{}}
 
 @test (a=1, b=2) == (a=1, :b=>2)
 @test (b=2,) == (; b=2) == (; :b=>2)

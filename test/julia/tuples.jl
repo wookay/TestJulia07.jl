@@ -1,3 +1,13 @@
+module test_julia_tuples
+
+using Test
+
+@test Tuple{}(()) == Tuple(()) == Tuple{}() == ()
+@test_throws MethodError Tuple()
+
+end # module test_julia_tuples
+
+
 module test_julia_tuples_ntuple
 
 using Test
