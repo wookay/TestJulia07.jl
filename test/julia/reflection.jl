@@ -35,3 +35,12 @@ using Test
 @test only(Base.return_types(==, Tuple{Int, Int})) === Bool
 
 end # module test_reflection_return_types
+
+
+module test_reflection_fieldtype
+
+using Test
+
+@test fieldtype(DataType, :name) === Core.TypeName
+
+end # module test_reflection_fieldtype
