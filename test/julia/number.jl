@@ -27,3 +27,13 @@ using Test
 @test !(-0.0 < 0.0)
 
 end # module test_julia_number_isless
+
+
+module test_julia_number_egal
+
+using Test
+
+@test   1.0 ==  1
+@test !(1.0 === 1)
+
+end # module test_julia_number_egal
