@@ -36,4 +36,7 @@ using Test
 @test   1.0 ==  1
 @test !(1.0 === 1)
 
+@test   false ==  0
+@test !(false === 0)
+
 end # module test_julia_number_egal
