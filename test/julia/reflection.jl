@@ -44,3 +44,12 @@ using Test
 @test fieldtype(DataType, :name) === Core.TypeName
 
 end # module test_reflection_fieldtype
+
+
+module test_reflection_isexported
+
+using Test
+
+@test !Base.isexported(Base, :isexported)
+
+end # module test_reflection_isexported
