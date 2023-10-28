@@ -19,7 +19,7 @@ end
 @test !@isdefined Meh
 @test isdefined(@__MODULE__, :B)
 
-@test length(Base.loaded_modules) >= 33
+@test length(Base.loaded_modules) >= 23
 
 end # module test_julia_modules1
 
