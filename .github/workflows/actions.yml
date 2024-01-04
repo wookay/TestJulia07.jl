@@ -12,14 +12,15 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        julia-version: [1.9.3]
+        julia-version: [1.10.0]
         julia-arch: [x64]
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest]
         include:
           - julia-version: nightly
             os: ubuntu-latest
-          - julia-version: 1.8.5
+          - julia-version: 1.6.7
             os: ubuntu-latest
+
     steps:
       - uses: actions/checkout@master
       - uses: julia-actions/setup-julia@latest
@@ -27,4 +28,15 @@ jobs:
           version: ${{ matrix.julia-version }}
       - name: runtests
         run: |
+             julia --project=. -e 'using Pkg; Pkg.test()'
+
+  RunForWindows:
+    needs: Test
+    if: github.event.ref == 'refs/heads/master'
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: runtests
+        run: |
+             julia --version
              julia --project=. -e 'using Pkg; Pkg.test()'
