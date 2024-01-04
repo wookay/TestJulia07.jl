@@ -1,4 +1,5 @@
-module test_julia_namedtuples
+using Jive
+@If VERSION >= v"1.7.0" module test_julia_namedtuples
 
 using Test
 
