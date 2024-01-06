@@ -1,3 +1,4 @@
+# https://github.com/julia-actions/cache#usage
 name: CI
 
 on:
@@ -6,6 +7,11 @@ on:
       - README.md
       - 'docs/**'
   pull_request:
+
+# needed to allow julia-actions/cache to delete old caches that it has created
+permissions:
+  actions: write
+  contents: read
 
 jobs:
   Test:
@@ -20,23 +26,22 @@ jobs:
             os: ubuntu-latest
           - julia-version: 1.6.7
             os: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@master
-      - uses: julia-actions/setup-julia@latest
-        with:
-          version: ${{ matrix.julia-version }}
-      - name: runtests
-        run: |
-             julia --project=. -e 'using Pkg; Pkg.test()'
+    - uses: actions/checkout@v4
+    - uses: julia-actions/setup-julia@v1
+      with:
+        version: ${{ matrix.julia-version }}
+    - uses: julia-actions/cache@v1
+    - uses: julia-actions/julia-buildpkg@v1
+    - uses: julia-actions/julia-runtest@v1
 
   RunForWindows:
     needs: Test
     if: github.event.ref == 'refs/heads/master'
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@master
-      - name: runtests
-        run: |
-             julia --version
-             julia --project=. -e 'using Pkg; Pkg.test()'
+    - uses: actions/checkout@v4
+    - uses: julia-actions/setup-julia@v1
+    - uses: julia-actions/cache@v1
+    - uses: julia-actions/julia-buildpkg@v1
+    - uses: julia-actions/julia-runtest@v1
