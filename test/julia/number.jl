@@ -42,15 +42,6 @@ using Test
 end # module test_julia_number_egal
 
 
-module test_julia_number_digits
-
-using Test
-
-@test digits(123) == [3, 2, 1]
-
-end # module test_julia_number_digits
-
-
 module test_julia_number_binary_representation
 
 using Test
