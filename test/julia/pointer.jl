@@ -90,26 +90,30 @@ end # @testset "unsafe_wrap"
 
 
 foo(x::Int, y::Int) = x + y
+
 @testset "@cfunction Base.unsafe_convert" begin
+
 # @cfunction(callable, ReturnType, (ArgumentTypes...,)) -> Ptr{Cvoid}
 fa = @cfunction(foo, Int, (Int, Int))
 @test ccall(fa, Int, (Int,Int), 1, 2) == 3
+@test fa isa Ptr{Cvoid}
 
 # @cfunction(\$callable, ReturnType, (ArgumentTypes...,)) -> CFunction
 fb = @cfunction($foo, Int, (Int, Int))
+fptr = Base.unsafe_convert(Ptr{Cvoid}, fb)
+@test ccall(fptr, Int, (Int,Int), 1, 2) == 3
 @test fb isa Base.CFunction
-@test ccall(Base.unsafe_convert(Ptr{Cvoid}, fb), Int, (Int,Int), 1, 2) == 3
+
+f42() = 42
+fc = @cfunction $f42 Int ()
+fptr = Base.unsafe_convert(Ptr{Cvoid}, fc)
+@test ccall(fptr, Int, ()) == 42
+
 end # @testset "@cfunction"
 
 
 @testset "GC.@preserve" begin
-f() = 42
-cf = @cfunction $f Int ()
-GC.@preserve cf begin
-    fptr = Base.unsafe_convert(Ptr{Cvoid}, cf)
-    b = ccall(fptr, Int, ())
-end
-@test b == 42
+# cfunction: closures are not supported on this platform
 end # @testset "GC.@preserve"
 
 end # module test_julia_pointer2
