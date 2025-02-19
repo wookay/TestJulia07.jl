@@ -9,7 +9,6 @@ Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 
 [extras]
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
-TOML = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
 Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 InteractiveUtils = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
@@ -28,4 +27,4 @@ Jive = "ba5e3d4b-8524-549f-bc71-e76ad9e9deed"
 IOCapture = "b5f81e59-6552-4d32-b1f0-c071b021bf89"
 
 [targets]
-test = ["Dates", "TOML", "Distributed", "InteractiveUtils", "LinearAlgebra", "Libdl", "Printf", "Profile", "Random", "SparseArrays", "SharedArrays", "Statistics", "Test", "Unicode", "UUIDs", "REPL", "Jive", "IOCapture"]
+test = ["Dates", "Distributed", "InteractiveUtils", "LinearAlgebra", "Libdl", "Printf", "Profile", "Random", "SparseArrays", "SharedArrays", "Statistics", "Test", "Unicode", "UUIDs", "REPL", "Jive", "IOCapture"]
