@@ -27,6 +27,8 @@ a,b = 1,2
 @test !(:false isa Symbol)
 @test false === :false
 
+@test Symbol(true) !== true
+@test Symbol(false) !== false
 @test Symbol(true) === Symbol("true") !== :true
 @test Symbol(false) === Symbol("false") !== :false
 
