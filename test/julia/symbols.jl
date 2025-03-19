@@ -37,4 +37,6 @@ var"true" = "var true"
 @test :nothing isa Symbol
 @test Symbol(nothing) === Symbol("nothing") === :nothing
 
+@test :var"a b" === Symbol("a b")
+
 end # module test_julia_symbols
