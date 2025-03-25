@@ -19,7 +19,11 @@ end
 @test !@isdefined Meh
 @test isdefined(@__MODULE__, :B)
 
-@test length(Base.loaded_modules) >= 23
+if PROGRAM_FILE == "runtests.jl"
+    @test length(Base.loaded_modules) >= 23
+else
+    @test length(Base.loaded_modules) >= 18
+end
 
 end # module test_julia_modules1
 
@@ -147,3 +151,29 @@ using .A: +
 @test 1 + 2 == (1, 2)
 
 end # module test_julia_baremodule
+
+
+module test_julia_module_sandbox
+
+using Test
+
+# from Cthulhu.jl/test/IRShowSandbox.jl
+const Sandbox = Module()
+
+code1 = Meta.parseall(raw"""
+f() = 1
+"""; filename="sandbox.jl")
+Core.eval(Sandbox, code1)
+
+using .Sandbox: f
+@test f() == 1
+
+code2 = Meta.parseall(raw"""
+g() = 2
+"""; filename="sandbox.jl")
+Core.eval(Sandbox, code2)
+
+using .Sandbox: g
+@test g() == 2
+
+end # module test_julia_module_sandbox
