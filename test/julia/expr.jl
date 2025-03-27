@@ -107,3 +107,45 @@ using Test
 @test :(- -) isa Expr
 
 end # module test_julia_expr2
+
+
+module test_julia_expr3
+
+using Test
+
+struct CondError
+    cond
+end
+
+macro cond_eval(cond::Symbol, expr::Expr)
+    quote
+        b = $(esc(cond))
+        if b
+           $(esc(expr))
+        else
+           CondError(b)
+        end
+    end
+end
+
+function f1()::Union{CondError, Int}
+    cond = true
+    a = 41
+    @cond_eval(cond, begin
+        a += 1
+        a
+    end)
+end
+
+function f2()::Union{CondError, Int}
+    cond = false
+    @cond_eval(cond, begin
+        a += 1
+        a
+    end)
+end
+
+@test @inferred(f1()) == 42
+@test @inferred(f2()) == CondError(false)
+
+end # module test_julia_expr3
