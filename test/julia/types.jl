@@ -49,6 +49,8 @@ using InteractiveUtils # subtypes
 @test supertype(DataType) === Type.body
 @test subtypes(DataType) == []
 
+@test DataType <: Type{T} where T
+
 @test Type <: Type
 @test Type{Int} <: Type
 @test Type{<:Integer} <: Type
@@ -142,6 +144,18 @@ f(x::Union{Int,String}, y::Union{Int,String}) = :union
 @test Base.uniontypes(Union{Int, String}) == [Int, String]
 
 end # module test_julia_types_union
+
+
+module test_julia_typejoin
+
+using Test
+
+@test typejoin(Int64, Int32, Int16) === Signed
+@test typejoin(Int, String) === Any
+
+@test Union{Int64, Int32, Int16} === Union{Int16, Int32, Int64}
+
+end # module test_julia_typejoin
 
 
 module test_julia_types_param
