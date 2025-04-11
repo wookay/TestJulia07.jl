@@ -24,15 +24,12 @@ a,b = 1,2
 @test :1 == 1
 @test Symbol(1) === Symbol("1")
 
-@test Bool(1) === true === :true
-@test Bool(0) === false === :false
+@test :true === true === Bool(1)
+@test !(:true isa Symbol)
+@test :false === false === Bool(0)
+
+@test :var"true" === Symbol(true) == Symbol("true") === Symbol("tru", "e")
 @test !isdefined(@__MODULE__, Symbol(true))
-
-var"true" = "var true"
-@test isdefined(@__MODULE__, Symbol(true))
-
-@test Symbol("tru", "e") === Symbol("true") === Symbol(true)
-@test Symbol(true) !== true
 
 @test :nothing isa Symbol
 @test Symbol(nothing) === Symbol("nothing") === :nothing
