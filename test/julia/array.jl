@@ -92,3 +92,26 @@ using Test
 @test_throws BoundsError   first([])
 
 end # module test_julia_array_only_first
+
+
+module test_julia_array_hashing
+
+using Test
+
+@test []  == []
+@test [] !== []
+
+end # module test_julia_array_hashing
+
+
+module test_julia_array_parameter_types
+
+using Test
+
+@test [] == Any[]
+@test [Int] == DataType[Int]
+
+@test [] isa Vector{Any}
+@test [Int] isa Vector{DataType}
+
+end # module test_julia_array_parameter_types

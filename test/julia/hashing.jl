@@ -12,4 +12,7 @@ using Test
 @test objectid(2) == objectid(2) == ccall(:jl_object_id, UInt, (Any,), 2)
 @test (===) isa Core.Builtin
 
+@test ===(≡, ===)
+@test !==(==, ===)
+
 end # module test_julia_hashing
