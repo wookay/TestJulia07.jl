@@ -1,4 +1,5 @@
-module test_julia_typealiases
+using Jive
+@useinside Main module test_julia_typealiases
 
 using Test
 
@@ -6,29 +7,19 @@ struct G
 end
 
 const GVec = Vector{G}
-
-if VERSION >= v"1.4"
-    @test endswith(sprint(show, GVec([G()])), ".test_julia_typealiases.G()]")
-elseif VERSION >= v"1.3"
-    @test endswith(sprint(show, GVec([G()])), ".test_julia_typealiases.G()]")
-end
+@test sprint(show, GVec([G()])) == "[G()]"
 
 function Base.show(io::IO, v::GVec)
     print(io, "GVec", '(')
     Base.show_delim_array(io, v, '[', ",", ']', false)
     print(io, ')')
 end
+@test sprint(show, GVec([G()])) == "GVec([G()])"
 
-if VERSION >= v"1.2"
-    @test endswith(sprint(show, GVec([G()])), ".test_julia_typealiases.G()])")
-else
-    @test sprint(show, GVec([G()])) == "GVec([G()])"
-end
 
+using Jive # sprint_plain
 
 const A = Vector{Int64}
-if VERSION >= v"1.6"
-    @test sprint(io -> show(io, MIME"text/plain"(), A)) == "Vector{Int64} (alias for Array{Int64, 1})"
-end
+@test sprint_plain(A) == "Vector{Int64} (alias for Array{Int64, 1})"
 
 end # module test_julia_typealiases
