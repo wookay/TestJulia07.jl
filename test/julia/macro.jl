@@ -152,3 +152,29 @@ end
 @test bar() == ["hello", "world"]
 
 end # module test_julia_macro_say_the_word
+
+
+module test_julia_macro_to_macro
+
+using Test
+
+macro foo(sym)
+    quote
+        ($sym = 42,)
+    end
+end
+
+function foo_syms()
+    ret_vals = []
+    syms = (:hello, :world)
+    for op in syms
+        foo_macro = Symbol("@foo")
+        expr = Expr(:macrocall, foo_macro, @__LINE__, op)
+        push!(ret_vals, eval(expr))
+    end
+    ret_vals
+end
+
+@test foo_syms() == [(hello = 42,), (world = 42,)]
+
+end # module test_julia_macro_to_macro
