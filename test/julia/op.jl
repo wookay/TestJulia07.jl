@@ -81,3 +81,25 @@ using Test
 @test (3 |> -) == -3
 
 end # module test_julia_op_pipe_gt # |>
+
+
+module test_julia_op_in
+
+using Test
+
+struct Q end
+struct R end
+struct S end
+U = Union{Q, R ,S}
+
+struct C end
+
+function Base.in(tup::NTuple{N, U}, ::Type{C}) where N
+    tup
+end
+
+(q, r, s) = Q(), R(), S()
+
+@test ((q, r, s) in C) == (q, r, s)
+
+end # module test_julia_op_in
