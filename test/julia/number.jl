@@ -64,3 +64,16 @@ using Test
 @test 0x1p3 === exp2(3) === ^(2.0, 3) === 8.0
 
 end # test_julia_number_exp2
+
+
+module test_julia_number_signbit
+
+using Test
+
+@test 0 == 0.0 == -0.0
+@test 0   === -0
+@test 0.0 !== -0.0
+@test signbit(-0.0)
+@test signbit( 0.0) === signbit(0) === false
+
+end # module test_julia_number_signbit
