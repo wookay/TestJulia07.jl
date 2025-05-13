@@ -18,7 +18,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        julia-version: [1.11.5]    # April 4, 2025
+        julia-version: [1.11.5]    # April 14, 2025
         julia-arch: [x64]
         os: [ubuntu-latest]
         include:

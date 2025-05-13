@@ -66,3 +66,14 @@ using Test
 @test (bswap ∘ bswap)(0x3039) == 0x3039
 
 end # module test_julia_bswap
+
+
+module test_julia_typemax
+
+using Test
+
+@test typemax(UInt) == 0xffffffffffffffff
+@test typemax( Int) == 0x7fffffffffffffff
+@test Int128(typemax(Int)) * 2 + 1 == typemax(UInt)
+
+end # module test_julia_typemax
