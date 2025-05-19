@@ -34,14 +34,6 @@ jobs:
     - uses: julia-actions/cache@v1
     - uses: julia-actions/julia-buildpkg@v1
     - uses: julia-actions/julia-runtest@v1
-
-  RunForWindows:
-    needs: Test
-    if: github.event.ref == 'refs/heads/master'
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: julia-actions/setup-julia@v1
-    - uses: julia-actions/cache@v1
-    - uses: julia-actions/julia-buildpkg@v1
-    - uses: julia-actions/julia-runtest@v1
+    - name: versioninfo
+      run: |
+           julia -e 'using InteractiveUtils; versioninfo()'
