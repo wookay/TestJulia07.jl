@@ -103,3 +103,14 @@ end
 @test ((q, r, s) in C) == (q, r, s)
 
 end # module test_julia_op_in
+
+
+module test_julia_op_splat
+
+using Test
+
+s = splat(+)
+@test s.f === +
+@test s((1, 2)) == 3
+
+end # module test_julia_op_splat
