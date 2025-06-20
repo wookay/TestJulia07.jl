@@ -105,7 +105,8 @@ end
 end # module test_julia_op_in
 
 
-module test_julia_op_splat
+using Jive
+@If VERSION >= v"1.9" module test_julia_op_splat
 
 using Test
 
