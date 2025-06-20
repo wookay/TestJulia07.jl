@@ -124,7 +124,7 @@ using Test
 # @test Tuple{Int,String} <: Tuple{Vararg{T} where T}
 
 f(x::T, y::T) where {T} = 0
-@test methods(f, Tuple{T,T} where T).mt.name === :f
+@test only(methods(f, Tuple{T,T} where T)).name === :f
 
 end # module test_julia_types_tuple
 

@@ -114,3 +114,20 @@ s = splat(+)
 @test s((1, 2)) == 3
 
 end # module test_julia_op_splat
+
+
+module test_julia_op_show
+
+using Test
+
+# from julia/base/show.jl
+
+@test Base.isunaryoperator(:+)
+@test Base.isbinaryoperator(:+)
+@test Base.is_unary_and_binary_operator(:+)
+
+@test !Base.isunaryoperator(:*)
+@test Base.isbinaryoperator(:*)
+@test !Base.is_unary_and_binary_operator(:*)
+
+end # module test_julia_op_show
