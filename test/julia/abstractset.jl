@@ -8,8 +8,10 @@ s1 = Set{Any}(Any[true, 1, 1.0])
 @test length(s1) == 1
 @test collect(s1) == Any[1.0]
 
+if VERSION >= v"1.11"
 s2 = IdSet{Any}(Any[true, 1, 1.0])
 @test length(s2) == 3
 @test collect(s2) == Any[true, 1, 1.0]
+end
 
 end # module test_julia_abstractset
