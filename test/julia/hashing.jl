@@ -3,9 +3,14 @@ module test_julia_hashing
 using Test
 
 # hash
-# == isequal
 @test hash(2) == hash(2)
+@test (===) isa Core.Builtin
+@test (<:) isa Core.Builtin
 @test !((==) isa Core.Builtin)
+
+@test ==(0.0, -0.0)
+@test !isequal(0.0, -0.0)
+@test !isequal(hash(0.0), hash(-0.0))
 
 # objectid
 # ===
